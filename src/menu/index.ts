@@ -49,7 +49,7 @@ const menuGroups = [
                       fill=""
                     />
                   </svg>`,
-        label: 'Calendar',
+        label: 'calendar',
         route: '/calendar'
       },
       {
@@ -70,7 +70,7 @@ const menuGroups = [
                       fill=""
                     />
                   </svg>`,
-        label: 'Profile',
+        label: 'profile',
         route: '/profile'
       },
       {
@@ -103,11 +103,11 @@ const menuGroups = [
                       fill="white"
                     />
                   </svg>`,
-        label: 'Forms',
+        label: 'forms',
         route: '#',
         children: [
-          { label: 'Form Elements', route: '/forms/form-elements' },
-          { label: 'Form Layout', route: '/forms/form-layout' }
+          { label: 'formElements', route: '/forms/form-elements' },
+          { label: 'formLayout', route: '/forms/form-layout' }
         ]
       },
       {
@@ -131,7 +131,7 @@ const menuGroups = [
                       </clipPath>
                     </defs>
                   </svg>`,
-        label: 'Tables',
+        label: 'tables',
         route: '/tables'
       },
       {
@@ -168,14 +168,14 @@ const menuGroups = [
                       fill=""
                     />
                   </svg>`,
-        label: 'Pages',
+        label: 'pages',
         route: '#',
-        children: [{ label: 'Settings', route: '/pages/settings' }]
+        children: [{ label: 'settings', route: '/pages/settings' }]
       }
     ]
   },
   {
-    name: 'OTHERS',
+    name: 'others',
     menuItems: [
       {
         icon: `<svg
@@ -202,9 +202,9 @@ const menuGroups = [
                       </clipPath>
                     </defs>
                   </svg>`,
-        label: 'Charts',
+        label: 'charts',
         route: '#',
-        children: [{ label: 'Basic Chart', route: '/charts/basic-chart' }]
+        children: [{ label: 'basicChart', route: '/charts/basic-chart' }]
       },
       {
         icon: `<svg
@@ -235,11 +235,11 @@ const menuGroups = [
                       </clipPath>
                     </defs>
                   </svg>`,
-        label: 'UI Elements',
+        label: 'uiElements',
         route: '#',
         children: [
-          { label: 'Alerts', route: '/ui-elements/alerts' },
-          { label: 'Buttons', route: '/ui-elements/buttons' }
+          { label: 'alerts', route: '/ui-elements/alerts' },
+          { label: 'buttons', route: '/ui-elements/buttons' }
         ]
       },
       {
@@ -267,11 +267,11 @@ const menuGroups = [
                       </clipPath>
                     </defs>
                   </svg>`,
-        label: 'Authentication',
+        label: 'auth',
         route: '#',
         children: [
-          { label: 'Sign In', route: '/auth/signin' },
-          { label: 'Sign Up', route: '/auth/signup' }
+          { label: 'signIn', route: '/auth/signin' },
+          { label: 'signUp', route: '/auth/signup' }
         ]
       }
     ]

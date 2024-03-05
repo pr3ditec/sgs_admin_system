@@ -1,5 +1,22 @@
 {
+  "menu": "Menu",
   "dashboard": "Painel",
   "overview": "Visão geral",
-  "profile": "Perfil"
+  "profile": "Perfil",
+  "calendar": "Calendario",
+  "forms": "Formulario",
+  "formElements": "Elementos",
+  "formLayout": "Layouts",
+  "tables": "Tabelas",
+  "pages": "Paginas",
+  "settings": "Configurações",
+  "others": "Outros",
+  "charts": "Graficos",
+  "basicChart": "basicos",
+  "uiElements": "UI elementos",
+  "buttons": "Botoes",
+  "alerts": "Alertas",
+  "auth": "Autenticação",
+  "signIn": "Entrar",
+  "signUp": "Cadastro"
 }
