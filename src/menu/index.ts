@@ -30,10 +30,7 @@ const menuGroups = [
                   </svg>`,
         label: 'dashboard',
         route: '#',
-        children: [
-          { label: 'overview', route: '/' },
-          { label: 'profile', route: '/' }
-        ]
+        children: [{ label: 'overview', route: '/' }]
       },
       {
         icon: `<svg
