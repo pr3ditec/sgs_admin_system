@@ -28,9 +28,12 @@ const menuGroups = [
                       fill=""
                     />
                   </svg>`,
-        label: 'Dashboard',
+        label: 'Painel',
         route: '#',
-        children: [{ label: 'eCommerce', route: '/' }]
+        children: [
+          { label: 'Geral', route: '/' },
+          { label: 'Perfil', route: '/' }
+        ]
       },
       {
         icon: `<svg
