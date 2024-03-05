@@ -21,7 +21,7 @@ const menuGroups: any = ref(menuItemGroups)
 
 <template>
   <aside
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-violet-900 duration-300 ease-linear lg:static lg:translate-x-0"
+    class="absolute left-0 top-0 z-9999 flex h-screen w-75.5 flex-col overflow-y-hidden bg-violet-900 duration-300 ease-linear lg:static lg:translate-x-0"
     :class="{
       'translate-x-0': sidebarStore.isSidebarOpen,
       '-translate-x-full': !sidebarStore.isSidebarOpen
