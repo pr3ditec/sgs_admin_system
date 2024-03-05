@@ -1,6 +1,6 @@
 const menuGroups = [
   {
-    name: 'MENU',
+    name: 'menu',
     menuItems: [
       {
         icon: `<svg
