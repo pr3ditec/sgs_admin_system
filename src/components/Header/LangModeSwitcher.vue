@@ -24,7 +24,10 @@ const isPortuguese = computed(() => {
 </script>
 
 <template>
-  <label class="relative m-0 block h-7.5 w-14 rounded-full bg-stroke" @click="changeLang()">
+  <label
+    class="relative m-0 block h-7.5 w-14 rounded-full bg-stroke dark:bg-slate-700"
+    @click="changeLang()"
+  >
     <input type="checkbox" class="absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0" />
     <span
       :class="{ 'right-1 translate-x-full': isPortuguese }"
