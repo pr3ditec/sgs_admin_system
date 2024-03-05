@@ -2,6 +2,8 @@
 import { useSidebarStore } from '@/stores/sidebar'
 import { useRoute } from 'vue-router'
 import SidebarDropdown from './SidebarDropdown.vue'
+import Translate from '@/translate'
+import { useTranslateStore } from '@/stores/translate'
 
 const sidebarStore = useSidebarStore()
 
@@ -34,7 +36,7 @@ const handleItemClick = () => {
     >
       <span v-html="item.icon"></span>
 
-      {{ item.label }}
+      {{ Translate.to(item.label) }}
 
       <svg
         v-if="item.children"
