@@ -1,3 +1,22 @@
 {
-    "home": "Home"
+  "menu": "Menu",
+  "dashboard": "Dashboard",
+  "overview": "Overview",
+  "profile": "Profile",
+  "calendar": "Calendar",
+  "forms": "Forms",
+  "formElements": "Elements",
+  "formLayout": "Layouts",
+  "tables": "Tables",
+  "pages": "Pages",
+  "settings": "Settings",
+  "others": "Others",
+  "charts": "Charts",
+  "basicChart": "Basic",
+  "uiElements": "UI Elements",
+  "buttons": "Buttons",
+  "alerts": "Alerts",
+  "auth": "Authentication",
+  "signIn": "Sign In",
+  "signUp": "Sign Up"
 }

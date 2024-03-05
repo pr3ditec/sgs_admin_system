@@ -5,6 +5,7 @@ import DropdownNotification from './DropdownNotification.vue'
 import DropdownUser from './DropdownUser.vue'
 import HeaderHamburgerButton from './HeaderHamburgerButton.vue'
 import HeaderLogoSmartphone from './HeaderLogoSmartphone.vue'
+import LangModeSwitcher from './LangModeSwitcher.vue'
 </script>
 
 <template>
@@ -24,6 +25,9 @@ import HeaderLogoSmartphone from './HeaderLogoSmartphone.vue'
 
       <div class="flex flex-row w-full justify-end gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
+          <li>
+            <LangModeSwitcher />
+          </li>
           <li>
             <!-- Dark Mode Toggler -->
             <DarkModeSwitcher />
