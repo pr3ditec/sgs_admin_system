@@ -46,5 +46,8 @@
   "create-client": "Criar cliente",
   "list-client":"Listar cliente",
   "create-equipment": "Criar aparelho",
-  "list-equipment": "Listar aparelho"
+  "list-equipment": "Listar aparelho",
+  "name": "Nome",
+  "email": "E-mail",
+  "password": "Senha"
 }

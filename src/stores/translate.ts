@@ -1,4 +1,4 @@
-import LocalStorageController from '@/components/helpers/LocalStorage'
+import LocalStorageController from '@/Helpers/LocalStorage'
 import { defineStore } from 'pinia'
 
 export const useTranslateStore = defineStore('translate', {

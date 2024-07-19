@@ -45,6 +45,9 @@
   "create-client": "Create client",
   "list-client":"List client",
   "create-equipment": "Create equipment",
-  "list-equipment": "List equipment"
+  "list-equipment": "List equipment",
+  "name": "Name",
+  "email": "E-mail",
+  "password": "Password"
 
 }
