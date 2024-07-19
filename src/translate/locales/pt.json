@@ -18,5 +18,19 @@
   "alerts": "Alertas",
   "auth": "Autenticação",
   "signIn": "Entrar",
-  "signUp": "Cadastro"
+  "signUp": "Cadastro",
+  "service-order": "Ordem de serviço",
+  "create": "Criar",
+  "list": "Listar",
+  "client": "Cliente",
+  "equipment": "Equipamento",
+  "admin": "Administrador",
+  "city": "Cidade",
+  "users": "Usuários",
+  "user-type": "Tipo de usuário",
+  "permission": "Permissões",
+  "add-permission": "Adicionar permissão",
+  "logs": "Logs",
+  "create-user": "Criar usuários",
+  "list-user": "Listar usuários"
 }

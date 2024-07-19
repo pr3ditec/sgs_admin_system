@@ -18,5 +18,19 @@
   "alerts": "Alerts",
   "auth": "Authentication",
   "signIn": "Sign In",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "service-order": "Service order",
+  "create": "Create",
+  "list": "List",
+  "client": "Client",
+  "equipment": "Equipment",
+  "admin": "Mannager",
+  "city": "City",
+  "users": "Users",
+  "user-type": "User type",
+  "permission": "Permissions",
+  "add-permission": "Add permission",
+  "logs": "Logs",
+  "create-user": "Create users",
+  "list-user": "List users"
 }

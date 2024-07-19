@@ -3,7 +3,7 @@ import en from './locales/en.json'
 import pt from './locales/pt.json'
 
 export default class Translate {
-  static to(key: String) {
+  static to(key: String | unknown) {
     const stores = useTranslateStore()
     const lang = stores.getLang // esse valor precisa vir de localstorage
     try {

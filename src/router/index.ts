@@ -9,16 +9,40 @@ import SettingsView from '@/views/Pages/SettingsView.vue'
 import TablesView from '@/views/TablesView.vue'
 import AlertsView from '@/views/UiElements/AlertsView.vue'
 import ButtonsView from '@/views/UiElements/ButtonsView.vue'
+import Translate from '@/translate'
 
 const routes = [
+  /** MAIN */
   {
     path: '/',
-    name: 'eCommerce',
+    name: 'Pagína inicial',
     component: () => import('@/views/Dashboard/ECommerceView.vue'),
     meta: {
-      title: 'eCommerce Dashboard'
+      title: 'main'
     }
   },
+  /** MAIN */
+
+  /** USUARIO */
+  {
+    path: '/user/create',
+    name: 'Criação de usuários',
+    component: () => import('@/views/Users/CreateUserView.vue'),
+    meta: {
+      title: 'create-user'
+    }
+  },
+  {
+    path: '/user/list',
+    name: 'Lista de usuários',
+    component: () => import('@/views/Users/ListUserView.vue'),
+    meta: {
+      title: 'list-user'
+    }
+  },
+  /** USUARIO */
+
+  // ROTAS DO TEMPLATE
   {
     path: '/calendar',
     name: 'calendar',
@@ -118,7 +142,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title}| SGS`
+  document.title = `${Translate.to(to.meta.title)} | SGS`
   next()
 })
 

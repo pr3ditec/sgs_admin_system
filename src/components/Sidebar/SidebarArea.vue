@@ -21,7 +21,7 @@ const menuGroups: any = ref(menuItemGroups)
 
 <template>
   <aside
-    class="absolute left-0 top-0 z-9999 flex h-screen w-75.5 flex-col overflow-y-hidden bg-violet-900 duration-300 ease-linear lg:static lg:translate-x-0"
+    class="absolute left-0 top-0 z-9999 flex h-screen w-75.5 flex-col overflow-y-hidden bg-slate-800 duration-300 ease-linear lg:static lg:translate-x-0"
     :class="{
       'translate-x-0': sidebarStore.isSidebarOpen,
       '-translate-x-full': !sidebarStore.isSidebarOpen
@@ -40,11 +40,12 @@ const menuGroups: any = ref(menuItemGroups)
     </div>
     <!-- SIDEBAR HEADER -->
 
-    <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+    <div class="overflow-scroll flex flex-col overflow-y-auto duration-300 ease-linear">
       <!-- Sidebar Menu -->
       <nav class="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
         <template v-for="menuGroup in menuGroups" :key="menuGroup.name">
-          <div>
+          <!-- adicionar permissoes -->
+          <div v-if="menuGroup.permission">
             <h3 class="mb-4 ml-4 text-md font-medium text-slate-300 uppercase">
               {{ Translate.to(menuGroup.name) }}
             </h3>
