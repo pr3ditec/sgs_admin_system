@@ -2,11 +2,7 @@
 import type { PropType, Ref } from 'vue'
 import SGSLoading from '@/components/Loading/SGSLoading.vue'
 import Translate from '@/translate'
-
-interface ButtonController {
-  isLoading: boolean
-  isDisabled: boolean
-}
+import type { ButtonController } from '@/Helpers/Types'
 
 const props = defineProps({
   label: String,
