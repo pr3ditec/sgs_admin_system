@@ -18,7 +18,7 @@ const routes = [
     name: 'Pagína inicial',
     component: () => import('@/views/Dashboard/ECommerceView.vue'),
     meta: {
-      title: 'main'
+      title: 'homepage'
     }
   },
   /** MAIN */
@@ -41,6 +41,139 @@ const routes = [
     }
   },
   /** USUARIO */
+
+  /** TIPO USUARIO */
+  {
+    path: '/user/type/create',
+    name: 'Criação de tipo usuários',
+    component: () => import('@/views/UserType/CreateUserTypeView.vue'),
+    meta: {
+      title: 'create-type-user'
+    }
+  },
+  {
+    path: '/user/type/list',
+    name: 'Lista de tipo usuários',
+    component: () => import('@/views/UserType/ListUserTypeView.vue'),
+    meta: {
+      title: 'list-type-user'
+    }
+  },
+  /** TIPO USUARIO */
+
+  /** PERMISSOES */
+  {
+    path: '/permission/create',
+    name: 'Criação permissões',
+    component: () => import('@/views/Permission/CreatePermissionView.vue'),
+    meta: {
+      title: 'create-permission'
+    }
+  },
+  {
+    path: '/permission/list',
+    name: 'Lista de permissões',
+    component: () => import('@/views/Permission/ListPermissionView.vue'),
+    meta: {
+      title: 'list-permission'
+    }
+  },
+  {
+    path: '/permission/add',
+    name: 'Adicionar permissões',
+    component: () => import('@/views/Permission/AddPermissionView.vue'),
+    meta: {
+      title: 'add-permission'
+    }
+  },
+  /** PERMISSOES */
+
+  /** CALENDARIO */
+  {
+    path: '/services/calendar',
+    name: 'Calendário de serviços',
+    component: () => import('@/views/ServicesCalendar/ServicesCalendarView.vue'),
+    meta: {
+      title: 'services-calendar'
+    }
+  },
+  /** CALENDARIO */
+
+  /** ORDEM DE SERVICO */
+  {
+    path: '/service-order/create',
+    name: 'Criar ordem de serviços',
+    component: () => import('@/views/ServiceOrder/CreateServiceOrderView.vue'),
+    meta: {
+      title: 'create-service-order'
+    }
+  },
+  {
+    path: '/service-order/list',
+    name: 'Listar ordem de serviços',
+    component: () => import('@/views/ServiceOrder/ListServiceOrderView.vue'),
+    meta: {
+      title: 'list-service-order'
+    }
+  },
+  /** ORDEM DE SERVICO */
+
+  /** CLIENTE */
+  {
+    path: '/client/create',
+    name: 'Criar cliente',
+    component: () => import('@/views/Client/CreateClientView.vue'),
+    meta: {
+      title: 'create-client'
+    }
+  },
+  {
+    path: '/client/list',
+    name: 'Listar clientes',
+    component: () => import('@/views/Client/ListClientView.vue'),
+    meta: {
+      title: 'list-client'
+    }
+  },
+  /** CLIENTE */
+
+  /** APARELHO */
+  {
+    path: '/equipment/create',
+    name: 'Criar aparelho',
+    component: () => import('@/views/Equipment/CreateEquipmentView.vue'),
+    meta: {
+      title: 'create-equipment'
+    }
+  },
+  {
+    path: '/equipment/list',
+    name: 'Listar equipamentos',
+    component: () => import('@/views/Equipment/ListEquipmentView.vue'),
+    meta: {
+      title: 'list-equipment'
+    }
+  },
+  /** APARELHO */
+
+  /** CIDADE */
+  {
+    path: '/city/create',
+    name: 'Criar cidade',
+    component: () => import('@/views/City/CreateCityView.vue'),
+    meta: {
+      title: 'create-city'
+    }
+  },
+  {
+    path: '/city/list',
+    name: 'Listar cidade',
+    component: () => import('@/views/City/ListCityView.vue'),
+    meta: {
+      title: 'list-city'
+    }
+  },
+  /** CIDADE */
 
   // ROTAS DO TEMPLATE
   {

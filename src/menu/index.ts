@@ -39,7 +39,7 @@ const menuGroups = [
     menuItems: [
       {
         icon: '',
-        label: 'calendar',
+        label: 'services-calendar',
         route: '/services/calendar'
       },
       {
@@ -56,8 +56,8 @@ const menuGroups = [
         label: 'client',
         route: '',
         children: [
-          { label: 'create', route: '/create/client' },
-          { label: 'list', route: '/list/client' }
+          { label: 'create', route: '/client/create' },
+          { label: 'list', route: '/client/list' }
         ]
       },
       {
@@ -65,8 +65,8 @@ const menuGroups = [
         label: 'equipment',
         route: '',
         children: [
-          { label: 'create', route: '/create/equipment' },
-          { label: 'list', route: '/list/equipment' }
+          { label: 'create', route: '/equipment/create' },
+          { label: 'list', route: '/equipment/list' }
         ]
       },
       {
@@ -74,8 +74,8 @@ const menuGroups = [
         label: 'city',
         route: '',
         children: [
-          { label: 'create', route: '/create/city' },
-          { label: 'list', route: '/list/city' }
+          { label: 'create', route: '/city/create' },
+          { label: 'list', route: '/city/list' }
         ]
       }
     ]

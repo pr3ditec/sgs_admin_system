@@ -32,5 +32,19 @@
   "add-permission": "Adicionar permissão",
   "logs": "Logs",
   "create-user": "Criar usuários",
-  "list-user": "Listar usuários"
+  "list-user": "Listar usuários",
+  "homepage": "Pagína inicial",
+  "list-type-user": "Listar tipos de usuário",
+  "create-type-user": "Criar tipo de usuário",
+  "create-permission": "Criar permissão",
+  "list-permission": "Listar permissões",
+  "services-calendar": "Calendário de serviços",
+  "create-service-order": "Criar ordem de serviço",
+  "list-service-order": "Listar ordens de serviço",
+  "create-city": "Criar cidade",
+  "list-city": "Listar cidade",
+  "create-client": "Criar cliente",
+  "list-client":"Listar cliente",
+  "create-equipment": "Criar aparelho",
+  "list-equipment": "Listar aparelho"
 }

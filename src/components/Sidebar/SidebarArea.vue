@@ -44,8 +44,7 @@ const menuGroups: any = ref(menuItemGroups)
       <!-- Sidebar Menu -->
       <nav class="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
         <template v-for="menuGroup in menuGroups" :key="menuGroup.name">
-          <!-- adicionar permissoes -->
-          <div v-if="menuGroup.permission">
+          <div>
             <h3 class="mb-4 ml-4 text-md font-medium text-slate-300 uppercase">
               {{ Translate.to(menuGroup.name) }}
             </h3>

@@ -32,5 +32,19 @@
   "add-permission": "Add permission",
   "logs": "Logs",
   "create-user": "Create users",
-  "list-user": "List users"
+  "list-user": "List users",
+  "homepage": "Homepage",
+  "list-type-user": "List user type",
+  "create-type-user": "Create user type",
+  "create-permission": "Create permissions",
+  "list-permission": "List permissions",
+  "create-service-order": "Create service order",
+  "list-service-order": "List service order",
+  "create-city": "Create city",
+  "list-city": "List city",
+  "create-client": "Create client",
+  "list-client":"List client",
+  "create-equipment": "Create equipment",
+  "list-equipment": "List equipment"
+
 }
