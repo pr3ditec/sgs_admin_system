@@ -16,9 +16,9 @@ const routes = [
   {
     path: '/',
     name: 'Pagína inicial',
-    component: () => import('@/views/Dashboard/ECommerceView.vue'),
+    component: () => import('@/views/Dashboard/DashboardHomeView.vue'),
     meta: {
-      title: 'homepage'
+      title: 'dashboard'
     }
   },
   /** MAIN */
