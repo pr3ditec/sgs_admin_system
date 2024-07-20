@@ -42,24 +42,24 @@ watch(
 )
 </script>
 <template>
-  <p class="mb-0">
+  <p class="mb-0 dark:text-zinc-200 text-black">
     {{ Translate.to(label) }}
     <i v-show="required" class="text-danger">*</i>
   </p>
-  <hr class="text-slate-200 mb-2 w-1/2" />
+  <hr class="dark:text-zinc-200 text-slate-200 mb-2 w-1/2" />
   <multiselect
     :disabled="controller?.isDisabled"
     v-if="props.items?.length"
     v-model="selectableValue"
     :options="props.items"
-    class="custom-multiselect"
     :searchable="true"
     :placeholder="Translate.to('select-item')"
     :label="track?.name"
     :track-by="track?.field"
     @select="(selectedOption: any, id: any) => emits('updateValue', selectedOption[track?.field])"
     @remove="(removeOption: any, id: any) => emits('updateValue', 0)"
-  ></multiselect>
+  >
+  </multiselect>
   <p v-show="controller?.notFound" class="text-danger lowercase">{{ Translate.to('not-found') }}</p>
   <p v-show="controller?.isEmpty" class="text-danger lowercase">{{ Translate.to('empty-data') }}</p>
 </template>

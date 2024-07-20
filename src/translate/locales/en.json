@@ -49,6 +49,13 @@
   "name": "Name",
   "email": "E-mail",
   "password": "Password",
-  "select-item": "Select an item"
-
+  "select-item": "Select an item",
+  "empty-data": "Field cannot be empty",
+  "short-data": "Password must have 8 digits",
+  "success": "Success",
+  "warning": "Warning",
+  "error" : "Error",
+  "type-here": "Type here....",
+  "type-password": "Type the password....",
+  "unexpected-error": "Unexpected error"
 }

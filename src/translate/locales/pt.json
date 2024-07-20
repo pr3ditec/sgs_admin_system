@@ -50,5 +50,13 @@
   "name": "Nome",
   "email": "E-mail",
   "password": "Senha",
-  "select-item": "Selecione um item"
+  "select-item": "Selecione um item",
+  "empty-data": "Campo não pode estar vazio",
+  "short-data": "Senha precisa ter ao minimo 8 caracteres",
+  "success": "Sucesso",
+  "warning": "Atenção",
+  "error" : "Erro",
+  "type-here": "Digite aqui....",
+  "type-password": "Digite a senha....",
+  "unexpected-error": "Erro inesperado"
 }
