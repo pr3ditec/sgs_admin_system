@@ -16,7 +16,11 @@ export interface InputController {
   isEmpty: boolean
   isDisabled: boolean
 }
-
+export interface PasswordController {
+  isEmpty: boolean
+  isDisabled: boolean
+  isShort: boolean
+}
 export interface ButtonController {
   isLoading: boolean
   isDisabled: boolean
@@ -28,8 +32,8 @@ export interface SelectController {
   notFound: boolean
 }
 
-export interface SelectObjectController{
-    field: String | any,
-    name: String,
+export interface SelectObjectController {
+  field: String | any
+  name: String
 }
 /** CONTROLADORES DE COMPONENTES */

@@ -23,10 +23,18 @@ import SGSSelectSearch from '@/components/Forms/SGSSelectSearch.vue'
 import type {
   ButtonController,
   InputController,
+  PasswordController,
   SelectController,
   TipoUsuario,
   User
 } from '@/Helpers/Types'
+import {
+  buttonHandler,
+  validateInputParameter,
+  validatePasswordParamenter,
+  validateSelectParameter
+} from '@/Helpers/Validator'
+import { Response } from '@/Helpers/Response'
 
 const request = useGlobalStore().request
 
@@ -43,9 +51,10 @@ const emailController: Ref<InputController> = ref({
   isEmpty: false,
   isDisabled: false
 })
-const senhaController: Ref<InputController> = ref({
+const senhaController: Ref<PasswordController> = ref({
   isEmpty: false,
-  isDisabled: false
+  isDisabled: false,
+  isShort: false
 })
 const tipoUsuarioController: Ref<SelectController> = ref({
   isDisabled: true,
@@ -71,10 +80,40 @@ const getTipoUsuarioData = async () => {
     }
   })
 }
-const validateData = () => {}
+const validateData = (): boolean => {
+  const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
+  const isValidEmail = validateInputParameter(emailController.value, apiFormData.value.email)
+  const isValidPassword = validatePasswordParamenter(senhaController.value, apiFormData.value.senha)
+  const isValidTipoUsuario = validateSelectParameter(
+    tipoUsuarioController.value,
+    apiFormData.value.tipo_usuario_id
+  )
+
+  return isValidNome && isValidEmail && isValidTipoUsuario && isValidPassword
+}
+
 const sendData = async () => {
-  console.log(apiFormData.value)
-  buttonController.value.isLoading = !buttonController.value.isLoading
+  buttonHandler(buttonController.value, true)
+
+  if (!validateData()) {
+    return buttonHandler(buttonController.value, false)
+  }
+
+  await request
+    .store('/usuario', apiFormData.value)
+    .then((res) => {
+      if (res.status) {
+        Response.show('success', res.message)
+      } else {
+        Response.show('error', res.message)
+      }
+    })
+    .catch((err) => {
+      Response.show('error', 'unexpected-error')
+    })
+    .finally(() => {
+      buttonHandler(buttonController.value, false)
+    })
 }
 onMounted(() => {
   Promise.all([getTipoUsuarioData()]).catch((err) => {
@@ -84,13 +123,23 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout :push="{ label: 'dashboard', to: '/' }">
+    <FormLayout title="create-user">
       <template #body>
-        <SGSInput label="name" required :reference="apiFormData" referenceName="nome" />
+        <SGSInput
+          label="name"
+          required
+          :reference="apiFormData"
+          referenceName="nome"
+          :controller="nomeController"
+        />
         <SGSDivider />
-        <SGSInput label="email" required :reference="apiFormData" referenceName="email" />
-        <SGSDivider />
-        <SGSPassword label="password" required :reference="apiFormData" referenceName="senha" />
+        <SGSInput
+          label="email"
+          required
+          :reference="apiFormData"
+          referenceName="email"
+          :controller="emailController"
+        />
         <SGSDivider />
         <SGSSelectSearch
           label="user-type"
@@ -99,6 +148,14 @@ onMounted(() => {
           required
           :track="{ field: 'id', name: 'nome' }"
           :controller="tipoUsuarioController"
+        />
+        <SGSDivider />
+        <SGSPassword
+          label="password"
+          required
+          :reference="apiFormData"
+          referenceName="senha"
+          :controller="senhaController"
         />
       </template>
       <template #handler>
