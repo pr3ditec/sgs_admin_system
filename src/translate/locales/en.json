@@ -57,5 +57,19 @@
   "error" : "Error",
   "type-here": "Type here....",
   "type-password": "Type the password....",
-  "unexpected-error": "Unexpected error"
+  "unexpected-error": "Unexpected error",
+  "index-user-empty": "Users not found",
+  "index-user-success": "Success to list users",
+  "index-user-error": "Error on list users",
+  "show-user-success": "User found",
+  "user-not-found": "User not found",
+  "show-user-error": "Error on search user",
+  "store-user-success": "User registered",
+  "store-user-error": "Error registered user",
+  "update-data-corupted": "Entity and Id doesn't match",
+  "update-user-success": "User updated",
+  "update-user-error": "Error on updated user",
+  "destroy-user-success": "User deleted",
+  "destroy-user-error": "Error on delete user"
+
 }

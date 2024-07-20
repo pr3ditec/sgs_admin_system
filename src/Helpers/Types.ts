@@ -37,3 +37,11 @@ export interface SelectObjectController {
   name: String
 }
 /** CONTROLADORES DE COMPONENTES */
+
+/** API */
+export interface ApiResponse {
+  status: boolean
+  messageCode: string
+  data: Object | Array<Object>
+}
+/** API */

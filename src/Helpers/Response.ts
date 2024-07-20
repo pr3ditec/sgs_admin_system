@@ -7,6 +7,7 @@ class Response {
       title: Translate.to(icon),
       icon: icon,
       text: Translate.to(message),
+      timer: 1000,
       //@ts-expect-error
       button: false
     })

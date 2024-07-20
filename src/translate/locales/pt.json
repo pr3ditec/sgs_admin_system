@@ -58,5 +58,18 @@
   "error" : "Erro",
   "type-here": "Digite aqui....",
   "type-password": "Digite a senha....",
-  "unexpected-error": "Erro inesperado"
+  "unexpected-error": "Erro inesperado",
+  "index-user-empty": "Nenhum usuário encontrado",
+  "index-user-success": "Usuaŕios eontrados com sucesso",
+  "index-user-error": "Erro os buscar usuários",
+  "show-user-success": "Usuário encontrado",
+  "user-not-found": "Usuário não encontrado",
+  "show-user-error": "Erro ao mostrar usuário",
+  "store-user-success": "Usuário cadastrado",
+  "store-user-error": "Erro ao cadastrar usuário",
+  "update-data-corupted": "Usuário não condiz com Id",
+  "update-user-success": "Usuário atualizado",
+  "update-user-error": "Erro ao atualizar usuário",
+  "destroy-user-success": "Usuário removido",
+  "destroy-user-error": "Erro ao deletar usuário"
 }

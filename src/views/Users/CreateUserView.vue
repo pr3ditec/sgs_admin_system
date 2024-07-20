@@ -21,6 +21,7 @@ import SGSPassword from '@/components/Forms/SGSPassword.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelectSearch from '@/components/Forms/SGSSelectSearch.vue'
 import type {
+  ApiResponse,
   ButtonController,
   InputController,
   PasswordController,
@@ -35,6 +36,8 @@ import {
   validateSelectParameter
 } from '@/Helpers/Validator'
 import { Response } from '@/Helpers/Response'
+import { clearUserData } from '@/Helpers/Free'
+import SGSSelect from '@/components/Forms/SGSSelect.vue'
 
 const request = useGlobalStore().request
 
@@ -101,11 +104,11 @@ const sendData = async () => {
 
   await request
     .store('/usuario', apiFormData.value)
-    .then((res) => {
+    .then((res: ApiResponse) => {
       if (res.status) {
-        Response.show('success', res.message)
+        Response.show('success', res.messageCode)
       } else {
-        Response.show('error', res.message)
+        Response.show('error', res.messageCode)
       }
     })
     .catch((err) => {
@@ -113,6 +116,7 @@ const sendData = async () => {
     })
     .finally(() => {
       buttonHandler(buttonController.value, false)
+      clearUserData(apiFormData.value)
     })
 }
 onMounted(() => {
@@ -141,13 +145,14 @@ onMounted(() => {
           :controller="emailController"
         />
         <SGSDivider />
-        <SGSSelectSearch
+        <SGSSelect
           label="user-type"
           :items="tipoUsuarioData"
-          @update-value="(value) => (apiFormData.tipo_usuario_id = value)"
-          required
           :track="{ field: 'id', name: 'nome' }"
           :controller="tipoUsuarioController"
+          :reference="apiFormData"
+          referenceName="tipo_usuario_id"
+          required
         />
         <SGSDivider />
         <SGSPassword
