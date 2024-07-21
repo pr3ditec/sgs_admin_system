@@ -70,6 +70,14 @@
   "update-user-success": "User updated",
   "update-user-error": "Error on updated user",
   "destroy-user-success": "User deleted",
-  "destroy-user-error": "Error on delete user"
+  "destroy-user-error": "Error on delete user",
+  "search-here": "Search....",
+  "actions": "Actions",
+  "edit": "Edit",
+  "delete": "Delete",
+  "delete-data": "Are you sure of delete?",
+  "yes": "Yes",
+  "no": "No",
+  "empty-table": "Table is empty"
 
 }

@@ -36,12 +36,17 @@ export interface SelectObjectController {
   field: String | any
   name: String
 }
+
+export interface SearchController {
+  value: string
+  result: Array<Object>
+}
 /** CONTROLADORES DE COMPONENTES */
 
 /** API */
 export interface ApiResponse {
   status: boolean
   messageCode: string
-  data: Object | Array<Object>
+  list: Object | Array<Object>
 }
 /** API */

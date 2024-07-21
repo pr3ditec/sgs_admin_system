@@ -1,15 +1,7 @@
 <script setup lang="ts">
 /**
  * @description View para cadastro de usuários
- *
- * @interface User define as tipagems de usuario para a apiFormData
- * @var buttonController Controlador vinculado ao componente de botao
- * @var tipoUsuarioData Objeto recuperado da api
- * @var apiFormData Objeto que sera passado para a api
- * @method getTipoUsuarioData Busca tipos de usuario da api
- * @method validateData Executa as validações nos items que serão enviados para api
- * @method sendData Envia uma requisição do tipo post para a api
- * @method onMounted Executa a promise que busca os dados necessários da api
+ * @active
  */
 import { onMounted, ref, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
@@ -19,7 +11,6 @@ import SGSButton from '@/components/Buttons/SGSButton.vue'
 import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSPassword from '@/components/Forms/SGSPassword.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
-import SGSSelectSearch from '@/components/Forms/SGSSelectSearch.vue'
 import type {
   ApiResponse,
   ButtonController,
@@ -38,6 +29,7 @@ import {
 import { Response } from '@/Helpers/Response'
 import { clearUserData } from '@/Helpers/Free'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
+import { bindKey } from '@/Helpers/Binder'
 
 const request = useGlobalStore().request
 
@@ -119,10 +111,12 @@ const sendData = async () => {
       clearUserData(apiFormData.value)
     })
 }
+
 onMounted(() => {
   Promise.all([getTipoUsuarioData()]).catch((err) => {
     console.log('Erro ao buscar dados da api' + err)
   })
+  bindKey('Enter', sendData)
 })
 </script>
 <template>

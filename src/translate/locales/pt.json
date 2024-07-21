@@ -71,5 +71,13 @@
   "update-user-success": "Usuário atualizado",
   "update-user-error": "Erro ao atualizar usuário",
   "destroy-user-success": "Usuário removido",
-  "destroy-user-error": "Erro ao deletar usuário"
+  "destroy-user-error": "Erro ao deletar usuário",
+  "search-here": "Pesquise....",
+  "actions": "Ações",
+  "edit": "Editar",
+  "delete": "Deletar",
+  "delete-data": "Você deseja deletar estes dados?",
+  "yes": "Sim",
+  "no": "Não",
+  "empty-table": "Tabela vazia"
 }

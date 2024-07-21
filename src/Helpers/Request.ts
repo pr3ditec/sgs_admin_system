@@ -22,7 +22,7 @@ export default class Request {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response) {
-          return await error.response.data
+          return {}
         }
       }
     }
