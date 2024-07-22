@@ -79,5 +79,18 @@
   "delete-data": "Você deseja deletar estes dados?",
   "yes": "Sim",
   "no": "Não",
-  "empty-table": "Tabela vazia"
+  "empty-table": "Tabela vazia",
+  "create-user-type": "Tipo de usuário criado",
+  "index-type-user-empty": "Nenhum tipo de usuário encontrado",
+  "index-type-user-success": "Lista de tipos de usuário encontrado",
+  "index-type-user-error": "Erro ao listar tipos de usuário",
+  "show-type-user-success": "Tipo de usuário encontrado",
+  "type-user-not-found": "Tipo de usuário não encontrado",
+  "show-type-user-error": "Erro ao buscar usuário",
+  "store-type-user-success": "Tipo de usuário cadastrado",
+  "store-type-user-error": "Erro ao cadastrar tipo de usuário",
+  "update-type-user-success": "Tipo de usuário atualizado",
+  "update-type-user-error": "Erro ao atualizar tipo de usuário",
+  "destroy-type-user-success": "Tipo de usuário deletado",
+  "destroy-type-user-error":"Erro ao deletar tipo de usuário"
 }

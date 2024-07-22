@@ -1,6 +1,89 @@
 <script setup lang="ts">
+/**
+ * @description View para cadastro de usuários
+ * @active
+ */
+import { onMounted, ref, type Ref } from 'vue'
+import { useGlobalStore } from '@/stores/global'
+import type { ApiResponse, ButtonController, InputController, Permissao } from '@/Helpers/Types'
+import { buttonHandler, validateInputParameter } from '@/Helpers/Validator'
+import { Response } from '@/Helpers/Response'
+import { clearUserTypeData } from '@/Helpers/Free'
+import { bindKey } from '@/Helpers/Binder'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
+import SGSButton from '@/components/Buttons/SGSButton.vue'
+import SGSInput from '@/components/Forms/SGSInput.vue'
+import SGSDivider from '@/components/Forms/SGSDivider.vue'
+
+const request = useGlobalStore().request
+
+const buttonController: Ref<ButtonController> = ref({
+  isLoading: false,
+  isDisabled: false
+})
+
+const nomeController: Ref<InputController> = ref({
+  isEmpty: false,
+  isDisabled: false
+})
+
+const apiFormData: Ref<Permissao> = ref(<Permissao>{
+  nome: ''
+})
+
+const validateData = (): boolean => {
+  const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
+
+  return isValidNome
+}
+
+const sendData = async () => {
+  buttonHandler(buttonController.value, true)
+
+  if (!validateData()) {
+    return buttonHandler(buttonController.value, false)
+  }
+
+  await request
+    .store('/permissao', apiFormData.value)
+    .then((res: ApiResponse) => {
+      if (res.status) {
+        console.log(res.messageCode)
+        Response.show('success', res.messageCode)
+      } else {
+        Response.show('error', res.messageCode)
+      }
+    })
+    .catch((err) => {
+      Response.show('error', 'unexpected-error')
+    })
+    .finally(() => {
+      buttonHandler(buttonController.value, false)
+      clearUserTypeData(apiFormData.value)
+    })
+}
+
+onMounted(() => {
+  bindKey('Enter', sendData)
+})
 </script>
 <template>
-  <DefaultLayout> criar permissao </DefaultLayout>
+  <DefaultLayout>
+    <FormLayout title="create-permission">
+      <template #body>
+        <SGSInput
+          label="name"
+          required
+          :reference="apiFormData"
+          referenceName="nome"
+          :controller="nomeController"
+        />
+        <SGSDivider />
+      </template>
+      <template #handler>
+        <SGSButton @click="sendData" label="create-permission" :controller="buttonController" />
+      </template>
+    </FormLayout>
+  </DefaultLayout>
 </template>

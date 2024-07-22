@@ -78,6 +78,18 @@
   "delete-data": "Are you sure of delete?",
   "yes": "Yes",
   "no": "No",
-  "empty-table": "Table is empty"
-
+  "empty-table": "Table is empty",
+  "create-user-type": "Create user type",
+  "index-type-user-empty": "User type not found",
+  "index-type-user-success": "Success on list user type",
+  "index-type-user-error": "Error on list user type",
+  "show-type-user-success": "User type found",
+  "type-user-not-found": "User type not found",
+  "show-type-user-error": "Error on search user type",
+  "store-type-user-success": "User type registered",
+  "store-type-user-error": "Error registered type user",
+  "update-type-user-success": "User type updated",
+  "update-type-user-error": "Error on update user type",
+  "destroy-type-user-success": "User type deleted",
+  "destroy-type-user-error":"Error on delete user type"
 }

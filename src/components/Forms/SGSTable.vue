@@ -9,6 +9,21 @@ const props = defineProps({
 })
 const emits = defineEmits(['deleteData', 'editData'])
 
+const modalDeleteData = (id: Number) => {
+  swal({
+    icon: 'warning',
+    text: Translate.to('delete-data'),
+    buttons: {
+      confirm: {
+        text: Translate.to('yes')
+      }
+    }
+  }).then((res) => {
+    if (res) {
+      emits('deleteData', id)
+    }
+  })
+}
 const router = useRouter()
 </script>
 <template>
@@ -42,11 +57,9 @@ const router = useRouter()
         <a @click="emits('editData', res.id)" class="text-sky-800 dark:text-sky-400 underline">{{
           Translate.to('edit')
         }}</a>
-        <a
-          @click="emits('deleteData', res.id)"
-          class="text-black-600 dark:text-orange-600 underline"
-          >{{ Translate.to('delete') }}</a
-        >
+        <a @click="modalDeleteData(res.id)" class="text-black-600 dark:text-orange-600 underline">{{
+          Translate.to('delete')
+        }}</a>
       </span>
     </div>
   </div>

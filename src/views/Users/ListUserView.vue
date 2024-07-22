@@ -63,7 +63,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <DefaultLayout title="list-user">
+  <DefaultLayout>
     <SGSInput :reference="searchController" referenceName="value" />
     <SGSDivider />
     <SGSTable

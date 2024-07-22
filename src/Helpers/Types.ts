@@ -1,12 +1,14 @@
 /** API I/O */
-export interface User {
+export interface Usuario {
   nome: String
   email: String
   senha: String
   tipo_usuario_id: Number
 }
 export interface TipoUsuario {
-  id: Number
+  nome: String
+}
+export interface Permissao {
   nome: String
 }
 /** API I/O */
