@@ -18,7 +18,7 @@ import type {
   PasswordController,
   SelectController,
   TipoUsuario,
-  User
+  Usuario
 } from '@/Helpers/Types'
 import {
   buttonHandler,
@@ -58,7 +58,7 @@ const tipoUsuarioController: Ref<SelectController> = ref({
 })
 
 const tipoUsuarioData: Ref<Array<TipoUsuario>> = ref(<Array<TipoUsuario>>[])
-const apiFormData: Ref<User> = ref(<User>{
+const apiFormData: Ref<Usuario> = ref(<Usuario>{
   nome: '',
   email: '',
   senha: '',

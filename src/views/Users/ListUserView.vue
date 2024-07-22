@@ -3,7 +3,7 @@
  * @description View para listagem de usuários
  * @active
  */
-import type { ApiResponse, SearchController, User } from '@/Helpers/Types'
+import type { ApiResponse, SearchController, Usuario } from '@/Helpers/Types'
 import { onMounted, ref, watch, type Ref } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useGlobalStore } from '@/stores/global'
@@ -20,10 +20,10 @@ const searchController: Ref<SearchController> = ref({
   value: '',
   result: []
 })
-const userData: Ref<Array<User>> = ref([])
+const userData: Ref<Array<Usuario>> = ref([])
 
 const searchInData = () => {
-  searchController.value.result = userData.value.filter((value: User) => {
+  searchController.value.result = userData.value.filter((value: Usuario) => {
     if (value.nome.toLocaleLowerCase().includes(searchController.value.value.toLocaleLowerCase())) {
       return value
     }
@@ -32,7 +32,7 @@ const searchInData = () => {
 const getUserData = async () => {
   await request.get('/usuario').then((res: ApiResponse) => {
     if (res.status) {
-      userData.value = res.list as Array<User>
+      userData.value = res.list as Array<Usuario>
       searchController.value.result = res.list as Array<any>
     } else {
       searchController.value.result = []
