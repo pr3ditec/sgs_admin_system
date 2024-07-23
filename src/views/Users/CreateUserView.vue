@@ -28,8 +28,8 @@ import {
 } from '@/Helpers/Validator'
 import { Response } from '@/Helpers/Response'
 import { clearUserData } from '@/Helpers/Free'
-import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import { bindKey } from '@/Helpers/Binder'
+import SGSSelect from '@/components/Forms/SGSSelect.vue'
 
 const request = useGlobalStore().request
 

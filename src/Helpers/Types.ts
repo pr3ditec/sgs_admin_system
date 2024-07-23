@@ -11,6 +11,11 @@ export interface TipoUsuario {
 export interface Permissao {
   nome: String
 }
+
+export interface PermissaoUsuario {
+  usuario_id: Number
+  permissao_id: Number
+}
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */
