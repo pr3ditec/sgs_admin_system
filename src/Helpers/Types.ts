@@ -46,7 +46,16 @@ export interface SelectObjectController {
 
 export interface SearchController {
   value: string
-  result: Array<Object>
+}
+
+export interface TableCotnroller {
+  isLoading: boolean
+}
+
+export interface HeaderTableController {
+  field: String
+  title: String
+  headerClass: String
 }
 /** CONTROLADORES DE COMPONENTES */
 

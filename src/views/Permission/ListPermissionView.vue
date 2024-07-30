@@ -3,7 +3,13 @@
  * @description View para listagem de usuários
  * @active
  */
-import type { ApiResponse, SearchController, Permissao } from '@/Helpers/Types'
+import type {
+  ApiResponse,
+  SearchController,
+  Permissao,
+  TableCotnroller,
+  HeaderTableController
+} from '@/Helpers/Types'
 import { onMounted, ref, watch, type Ref } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useGlobalStore } from '@/stores/global'
@@ -12,32 +18,47 @@ import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSTable from '@/components/Forms/SGSTable.vue'
 import { Response } from '@/Helpers/Response'
 import { useRouter } from 'vue-router'
+import Translate from '@/translate'
 
 const router = useRouter()
 const request = useGlobalStore().request
 
-const searchController: Ref<SearchController> = ref({
-  value: '',
-  result: []
+const tableController: Ref<TableCotnroller> = ref({
+  isLoading: false
 })
+const headerController: Ref<Array<HeaderTableController>> = ref([
+  {
+    field: 'id',
+    title: '#',
+    headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  },
+  {
+    field: 'nome',
+    title: Translate.to('name'),
+    headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  },
+  {
+    field: 'actions',
+    title: Translate.to('actions'),
+    headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  }
+])
+
 const permissionData: Ref<Array<Permissao>> = ref([])
 
-const searchInData = () => {
-  searchController.value.result = permissionData.value.filter((value: Permissao) => {
-    if (value.nome.toLocaleLowerCase().includes(searchController.value.value.toLocaleLowerCase())) {
-      return value
-    }
-  })
-}
 const getPermissionData = async () => {
-  await request.get('/permissao').then((res: ApiResponse) => {
-    if (res.status) {
-      permissionData.value = res.list as Array<Permissao>
-      searchController.value.result = res.list as Array<any>
-    } else {
-      searchController.value.result = []
-    }
-  })
+  tableController.value.isLoading = true
+
+  await request
+    .get('/permissao')
+    .then((res: ApiResponse) => {
+      if (res.status) {
+        permissionData.value = res.list as Array<Permissao>
+      }
+    })
+    .finally(() => {
+      tableController.value.isLoading = false
+    })
 }
 const deleteData = async (id: Number) => {
   await request.destroy(`/permissao/${id}`).then((res) => {
@@ -50,12 +71,6 @@ const deleteData = async (id: Number) => {
   })
 }
 
-watch(
-  () => searchController.value.value,
-  () => {
-    searchInData()
-  }
-)
 onMounted(() => {
   Promise.all([getPermissionData()]).catch((err) => {
     console.log('Erro em buscar dados da api')
@@ -64,11 +79,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSInput :reference="searchController" referenceName="value" />
-    <SGSDivider />
     <SGSTable
-      :search="searchController.value"
-      :result="searchController.result"
+      :result="permissionData"
+      :isLoading="tableController.isLoading"
+      :header="headerController"
       @editData="(id: Number) => router.push(`/permissao/${id}`)"
       @deleteData="deleteData"
     />
