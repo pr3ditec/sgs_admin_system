@@ -16,7 +16,7 @@
  * @method updateValue passa o valor para o componente pai
  */
 import { onMounted, ref, watch, type PropType, type Ref } from 'vue'
-import type { SelectController, SelectObjectController, TipoUsuario } from '@/Helpers/Types'
+import type { SelectController, SelectObjectController } from '@/Helpers/Types'
 import Translate from '@/translate'
 
 const props = defineProps({

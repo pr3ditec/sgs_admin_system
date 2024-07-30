@@ -13,7 +13,7 @@ import type {
 import { onMounted, ref, watch, type Ref } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useGlobalStore } from '@/stores/global'
-import SGSTable from '@/components/Forms/SGSTable.vue'
+import SGSTable from '@/components/Tables/SGSTable.vue'
 import { Response } from '@/Helpers/Response'
 import { useRouter } from 'vue-router'
 import Translate from '@/translate'

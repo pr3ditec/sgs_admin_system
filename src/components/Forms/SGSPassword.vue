@@ -7,8 +7,8 @@
  * @method emits Callback utilizada para alimentar componente pai com valores
  */
 import type { PasswordController } from '@/Helpers/Types'
+import type { PropType } from 'vue'
 import Translate from '@/translate'
-import type { Prop, PropType } from 'vue'
 
 const props = defineProps({
   label: String,

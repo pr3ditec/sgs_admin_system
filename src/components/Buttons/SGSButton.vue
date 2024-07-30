@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { PropType, Ref } from 'vue'
+import type { PropType } from 'vue'
+import type { ButtonController } from '@/Helpers/Types'
+//@ts-expect-error
 import SGSLoading from '@/components/Loading/SGSLoading.vue'
 import Translate from '@/translate'
-import type { ButtonController } from '@/Helpers/Types'
 
 const props = defineProps({
   label: String,

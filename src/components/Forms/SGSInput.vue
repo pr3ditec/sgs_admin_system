@@ -7,8 +7,8 @@
  * @method emits Callback utilizada para alimentar componente pai com valores
  */
 import type { InputController } from '@/Helpers/Types'
-import Translate from '@/translate'
 import type { PropType } from 'vue'
+import Translate from '@/translate'
 
 const props = defineProps({
   label: String,

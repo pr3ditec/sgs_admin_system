@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { ref, type Ref } from 'vue'
+import { useRouter } from 'vue-router'
+import type { SearchController } from '@/Helpers/Types'
 //@ts-expect-error
 import Vue3Datatable from '@bhplugin/vue3-datatable'
 import '@bhplugin/vue3-datatable/dist/style.css'
 import Translate from '@/translate'
 import swal from 'sweetalert'
-import { useRouter } from 'vue-router'
-import type { SearchController } from '@/Helpers/Types'
-import { ref, type Ref } from 'vue'
-import SGSInput from './SGSInput.vue'
-import SGSDivider from './SGSDivider.vue'
+import SGSInput from '@/components/Forms/SGSInput.vue'
+import SGSDivider from '@/components/Forms/SGSDivider.vue'
 
 const props = defineProps({
   search: String,

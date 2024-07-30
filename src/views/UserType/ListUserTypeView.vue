@@ -14,7 +14,7 @@ import { useGlobalStore } from '@/stores/global'
 import { Response } from '@/Helpers/Response'
 import { useRouter } from 'vue-router'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import SGSTable from '@/components/Forms/SGSTable.vue'
+import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
 
 const router = useRouter()
