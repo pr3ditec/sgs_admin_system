@@ -16,6 +16,7 @@ import { useRouter } from 'vue-router'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
+import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -83,5 +84,6 @@ onMounted(() => {
       @editData="(id: Number) => router.push(`/user/type/${id}`)"
       @deleteData="deleteData"
     />
+    <SGSTableHelper />
   </DefaultLayout>
 </template>

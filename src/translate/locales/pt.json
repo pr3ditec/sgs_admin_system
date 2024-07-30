@@ -92,5 +92,8 @@
   "update-type-user-success": "Tipo de usuário atualizado",
   "update-type-user-error": "Erro ao atualizar tipo de usuário",
   "destroy-type-user-success": "Tipo de usuário deletado",
-  "destroy-type-user-error":"Erro ao deletar tipo de usuário"
+  "destroy-type-user-error":"Erro ao deletar tipo de usuário",
+  "required-field": "Campo precisa estar preenchido",
+  "edit-button-helper": "Botão para acessar a pagina de edição",
+  "delete-button-helper": "Botão utilizado para deletar registro"
 }

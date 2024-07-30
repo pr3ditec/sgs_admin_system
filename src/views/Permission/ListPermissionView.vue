@@ -5,20 +5,18 @@
  */
 import type {
   ApiResponse,
-  SearchController,
   Permissao,
   TableCotnroller,
   HeaderTableController
 } from '@/Helpers/Types'
-import { onMounted, ref, watch, type Ref } from 'vue'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import { onMounted, ref, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
-import SGSInput from '@/components/Forms/SGSInput.vue'
-import SGSDivider from '@/components/Forms/SGSDivider.vue'
-import SGSTable from '@/components/Tables/SGSTable.vue'
 import { Response } from '@/Helpers/Response'
 import { useRouter } from 'vue-router'
 import Translate from '@/translate'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import SGSTable from '@/components/Tables/SGSTable.vue'
+import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -86,5 +84,6 @@ onMounted(() => {
       @editData="(id: Number) => router.push(`/permissao/${id}`)"
       @deleteData="deleteData"
     />
+    <SGSTableHelper />
   </DefaultLayout>
 </template>

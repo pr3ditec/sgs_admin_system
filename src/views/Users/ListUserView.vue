@@ -3,20 +3,15 @@
  * @description View para listagem de usuários
  * @active
  */
-import type {
-  ApiResponse,
-  HeaderTableController,
-  SearchController,
-  TableCotnroller,
-  Usuario
-} from '@/Helpers/Types'
-import { onMounted, ref, watch, type Ref } from 'vue'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import type { ApiResponse, HeaderTableController, TableCotnroller, Usuario } from '@/Helpers/Types'
+import { onMounted, ref, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
-import SGSTable from '@/components/Tables/SGSTable.vue'
 import { Response } from '@/Helpers/Response'
 import { useRouter } from 'vue-router'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
+import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -93,5 +88,6 @@ onMounted(() => {
       @editData="(id: Number) => router.push(`/users/${id}`)"
       @deleteData="deleteData"
     />
+    <SGSTableHelper />
   </DefaultLayout>
 </template>

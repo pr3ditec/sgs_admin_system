@@ -57,6 +57,12 @@ export interface HeaderTableController {
   title: String
   headerClass: String
 }
+
+export interface HelperController {
+  field: String
+  description: String
+  required: String
+}
 /** CONTROLADORES DE COMPONENTES */
 
 /** API */
