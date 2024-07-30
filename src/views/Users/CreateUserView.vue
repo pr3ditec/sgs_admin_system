@@ -30,6 +30,7 @@ import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSPassword from '@/components/Forms/SGSPassword.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
+import SGSFormHelper from '@/components/Forms/SGSFormHelper.vue'
 
 const request = useGlobalStore().request
 
@@ -122,6 +123,9 @@ onMounted(() => {
 <template>
   <DefaultLayout>
     <FormLayout title="create-user">
+      <template #helper>
+        <SGSFormHelper />
+      </template>
       <template #body>
         <SGSInput
           label="name"

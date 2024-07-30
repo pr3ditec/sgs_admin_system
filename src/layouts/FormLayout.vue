@@ -38,6 +38,9 @@ const props = defineProps({
         <RouterButton :label="back?.label" :to="back?.to" />
       </div>
 
+      <div class="ml-auto w-full">
+        <slot name="helper"> </slot>
+      </div>
       <div class="mx-auto w-10/12">
         <slot name="body"></slot>
       </div>

@@ -92,7 +92,7 @@
   "update-type-user-error": "Error on update user type",
   "destroy-type-user-success": "User type deleted",
   "destroy-type-user-error":"Error on delete user type",
-  "required-field": "Field must be filled",
+  "required-field-helper": "Field must be filled",
   "edit-button-helper": "Button for move to edit page",
   "delete-button-helper": "Button for delete data"
 }
