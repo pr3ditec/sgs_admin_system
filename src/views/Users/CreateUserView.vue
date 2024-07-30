@@ -5,12 +5,9 @@
  */
 import { onMounted, ref, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import FormLayout from '@/layouts/FormLayout.vue'
-import SGSButton from '@/components/Buttons/SGSButton.vue'
-import SGSInput from '@/components/Forms/SGSInput.vue'
-import SGSPassword from '@/components/Forms/SGSPassword.vue'
-import SGSDivider from '@/components/Forms/SGSDivider.vue'
+import { Response } from '@/Helpers/Response'
+import { clearUserData } from '@/Helpers/Free'
+import { bindKey } from '@/Helpers/Binder'
 import type {
   ApiResponse,
   ButtonController,
@@ -26,9 +23,12 @@ import {
   validatePasswordParamenter,
   validateSelectParameter
 } from '@/Helpers/Validator'
-import { Response } from '@/Helpers/Response'
-import { clearUserData } from '@/Helpers/Free'
-import { bindKey } from '@/Helpers/Binder'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
+import SGSButton from '@/components/Buttons/SGSButton.vue'
+import SGSInput from '@/components/Forms/SGSInput.vue'
+import SGSPassword from '@/components/Forms/SGSPassword.vue'
+import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
 
 const request = useGlobalStore().request
