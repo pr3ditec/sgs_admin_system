@@ -96,5 +96,16 @@
   "required-field-helper": "Campo precisa estar preenchido",
   "edit-button-helper": "Botão para acessar a pagina de edição",
   "delete-button-helper": "Botão utilizado para deletar registro",
-  "uf": "UF"
+  "uf": "Uf",
+  "cep": "Cep",
+  "logradouro": "Logradouro",
+  "number": "Numero",
+  "complement": "Complemento",
+  "normal-person": "Pessoa física",
+  "juridic-person": "Pessoa júridica",
+  "cpf": "Cpf",
+  "cnpj": "Cnpj",
+  "state-register": "Inscrição estadual",
+  "local-register": "Inscrição municipal",
+  "person-type": "Tipo de pessoa precisa ser selecionado"
 }

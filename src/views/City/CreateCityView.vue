@@ -42,7 +42,7 @@ const validateData = (): boolean => {
   const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
   const isValidUf = validateInputParameter(ufControler.value, apiFormData.value.uf)
 
-  return isValidNome
+  return isValidNome && isValidUf
 }
 
 const sendData = async () => {

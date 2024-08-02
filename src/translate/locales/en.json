@@ -95,5 +95,16 @@
   "required-field-helper": "Field must be filled",
   "edit-button-helper": "Button for move to edit page",
   "delete-button-helper": "Button for delete data",
-  "uf": "UF"
+  "uf": "Uf",
+  "cep": "Cep",
+  "logradouro": "Address",
+  "number": "Number",
+  "complement": "Complement",
+  "normal-person": "Normal person",
+  "juridic-person": "Juridic person",
+  "cpf": "Cpf",
+  "cnpj": "Cnpj",
+  "state-register": "State register",
+  "local-register": "Local register",
+  "person-type": "Person type must be selected"
 }

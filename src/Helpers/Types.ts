@@ -21,6 +21,19 @@ export interface Cidade {
   nome: String
   uf: String
 }
+
+export interface Cliente {
+  nome: String
+  logradouro: String
+  cep: String
+  numero: String
+  complemento: String
+  cidade_id: Number
+  cpf: Partial<String>
+  cnpj: Partial<String>
+  inscricao_municipal: Partial<String>
+  inscricao_estadual: Partial<String>
+}
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */
