@@ -107,5 +107,6 @@
   "cnpj": "Cnpj",
   "state-register": "Inscrição estadual",
   "local-register": "Inscrição municipal",
-  "person-type": "Tipo de pessoa precisa ser selecionado"
+  "person-type": "Tipo de pessoa precisa ser selecionado",
+  "type": "Tipo"
 }

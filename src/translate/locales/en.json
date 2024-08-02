@@ -106,5 +106,6 @@
   "cnpj": "Cnpj",
   "state-register": "State register",
   "local-register": "Local register",
-  "person-type": "Person type must be selected"
+  "person-type": "Person type must be selected",
+  "type": "Type"
 }

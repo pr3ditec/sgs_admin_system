@@ -34,6 +34,12 @@ export interface Cliente {
   inscricao_municipal: Partial<String>
   inscricao_estadual: Partial<String>
 }
+
+export interface Aparelho {
+  nome: String
+  tipo: String
+  cliente_id: Number
+}
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */
