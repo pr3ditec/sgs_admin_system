@@ -94,5 +94,6 @@
   "destroy-type-user-error":"Error on delete user type",
   "required-field-helper": "Field must be filled",
   "edit-button-helper": "Button for move to edit page",
-  "delete-button-helper": "Button for delete data"
+  "delete-button-helper": "Button for delete data",
+  "uf": "UF"
 }

@@ -16,6 +16,11 @@ export interface PermissaoUsuario {
   usuario_id: Number
   permissao_id: Number
 }
+
+export interface Cidade {
+  nome: String
+  uf: String
+}
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */

@@ -95,5 +95,6 @@
   "destroy-type-user-error":"Erro ao deletar tipo de usuário",
   "required-field-helper": "Campo precisa estar preenchido",
   "edit-button-helper": "Botão para acessar a pagina de edição",
-  "delete-button-helper": "Botão utilizado para deletar registro"
+  "delete-button-helper": "Botão utilizado para deletar registro",
+  "uf": "UF"
 }

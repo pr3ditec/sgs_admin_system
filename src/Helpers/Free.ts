@@ -1,4 +1,4 @@
-import type { PermissaoUsuario, TipoUsuario, Usuario } from './Types'
+import type { Cidade, PermissaoUsuario, TipoUsuario, Usuario } from './Types'
 
 const clearUserData = (formData: Usuario) => {
   formData.nome = ''
@@ -16,4 +16,9 @@ const clearPermissionUserData = (formData: PermissaoUsuario) => {
   formData.usuario_id = 0
 }
 
-export { clearUserData, clearUserTypeData, clearPermissionUserData }
+const clearCityData = (formData: Cidade) => {
+  formData.nome = ''
+  formData.uf = ''
+}
+
+export { clearUserData, clearUserTypeData, clearPermissionUserData, clearCityData }
