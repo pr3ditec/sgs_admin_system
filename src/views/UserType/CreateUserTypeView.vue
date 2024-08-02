@@ -49,7 +49,6 @@ const sendData = async () => {
     .store('/tipo-usuario', apiFormData.value)
     .then((res: ApiResponse) => {
       if (res.status) {
-        console.log(res.messageCode)
         Response.show('success', res.messageCode)
       } else {
         Response.show('error', res.messageCode)
