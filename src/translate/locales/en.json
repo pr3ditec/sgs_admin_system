@@ -107,5 +107,7 @@
   "state-register": "State register",
   "local-register": "Local register",
   "person-type": "Person type must be selected",
-  "type": "Type"
+  "type": "Type",
+  "finished": "Received",
+  "payed": "Payed"
 }

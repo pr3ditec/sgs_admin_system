@@ -33,12 +33,23 @@ export interface Cliente {
   cnpj: Partial<String>
   inscricao_municipal: Partial<String>
   inscricao_estadual: Partial<String>
+  usuario_id: Number
 }
 
 export interface Aparelho {
   nome: String
   tipo: String
   cliente_id: Number
+}
+
+export interface OrdemServico {
+  numero: String
+  concluido: boolean
+  recebido: boolean
+  equipamentos: Array<any>
+  servicos: Array<any>
+  cliente_id: Number
+  usuario_id: Number
 }
 /** API I/O */
 

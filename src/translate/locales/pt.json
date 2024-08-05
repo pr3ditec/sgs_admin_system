@@ -108,5 +108,7 @@
   "state-register": "Inscrição estadual",
   "local-register": "Inscrição municipal",
   "person-type": "Tipo de pessoa precisa ser selecionado",
-  "type": "Tipo"
+  "type": "Tipo",
+  "finished": "Recebido",
+  "payed": "Pago"
 }

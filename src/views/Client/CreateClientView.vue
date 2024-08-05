@@ -26,6 +26,7 @@ import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import SGSAddress from '@/components/Forms/SGSAddress.vue'
 import SGSOptional from '@/components/Forms/SGSOptional.vue'
 import Translate from '@/translate'
+import { getSessionUser } from '@/Helpers/SessionUser'
 
 const request = useGlobalStore().request
 
@@ -93,7 +94,8 @@ const apiFormData: Ref<Cliente> = ref(<Cliente>{
   cep: '',
   complemento: '',
   numero: '',
-  cidade_id: 0
+  cidade_id: 0,
+  usuario_id: 0
 })
 
 const validateData = (): boolean => {
@@ -164,6 +166,7 @@ onMounted(() => {
     console.log('Erro ao buscar dados de api')
   })
   bindKey('Enter', sendData)
+  apiFormData.value.usuario_id = getSessionUser() as number
 })
 </script>
 <template>

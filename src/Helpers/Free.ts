@@ -1,4 +1,12 @@
-import type { Aparelho, Cidade, Cliente, PermissaoUsuario, TipoUsuario, Usuario } from './Types'
+import type {
+  Aparelho,
+  Cidade,
+  Cliente,
+  OrdemServico,
+  PermissaoUsuario,
+  TipoUsuario,
+  Usuario
+} from './Types'
 
 const clearUserData = (formData: Usuario) => {
   formData.nome = ''
@@ -9,6 +17,16 @@ const clearUserData = (formData: Usuario) => {
 
 const clearUserTypeData = (formData: TipoUsuario) => {
   formData.nome = ''
+}
+
+const clearServiceOrder = (formData: OrdemServico) => {
+  formData.numero = ''
+  formData.concluido = false
+  formData.recebido = false
+  formData.equipamentos = []
+  formData.servicos = []
+  formData.cliente_id = 0
+  formData.usuario_id = 0
 }
 
 const clearPermissionUserData = (formData: PermissaoUsuario) => {
@@ -46,5 +64,6 @@ export {
   clearPermissionUserData,
   clearCityData,
   clearClientData,
-  clearEquipmentData
+  clearEquipmentData,
+  clearServiceOrder
 }

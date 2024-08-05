@@ -12,6 +12,10 @@ export default class LocalStorageController {
   static storeToken(token: String) {
     localStorage.setItem('token', token as string)
   }
+  static storeUser(usuario_id: Number) {
+    //@ts-expect-error
+    localStorage.setItem('usuario_id', usuario_id as string)
+  }
   /** STORE METHODS */
 
   /** RETRIEVE METHODS */
@@ -20,6 +24,9 @@ export default class LocalStorageController {
   }
   static getToken() {
     return localStorage.getItem('token')
+  }
+  static getUser() {
+    return localStorage.getItem('usuario_id')
   }
   /** RETRIEVE METHODS */
 }
