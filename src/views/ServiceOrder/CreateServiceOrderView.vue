@@ -3,19 +3,22 @@
  * @description View para cadastro de usuários
  * @active
  */
-import { onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref, watch, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
 import type {
+  Aparelho,
   ApiResponse,
   ButtonController,
   Cliente,
+  EquipamentosServicos,
   InputController,
   OrdemServico,
-  SelectController
+  SelectController,
+  Servicos
 } from '@/Helpers/Types'
 import { buttonHandler, validateInputParameter, validateSelectParameter } from '@/Helpers/Validator'
 import { Response } from '@/Helpers/Response'
-import { clearServiceOrder } from '@/Helpers/Free'
+import { clearEquipmentServiceOrder, clearServiceOrder } from '@/Helpers/Free'
 import { bindKey } from '@/Helpers/Binder'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import FormLayout from '@/layouts/FormLayout.vue'
@@ -25,6 +28,9 @@ import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import { getSessionUser } from '@/Helpers/SessionUser'
 import SGSCheckbox from '@/components/Forms/SGSCheckbox.vue'
+import SGSAddEquipmentService from '@/components/Forms/SGSAddEquipmentService.vue'
+import SGSSelectMany from '@/components/Forms/SGSSelectMany.vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const request = useGlobalStore().request
 
@@ -50,16 +56,44 @@ const usuarioController: Ref<SelectController> = ref({
   notFound: false
 })
 
+const aparelhoController: Ref<SelectController> = ref({
+  isDisabled: true,
+  isEmpty: false,
+  notFound: false
+})
+
+const servicoController: Ref<SelectController> = ref({
+  isDisabled: true,
+  isEmpty: false,
+  notFound: false
+})
+
+const equipmentCount: Ref<number> = ref(1)
+const serviceCount: Ref<number> = ref(1)
+
+const aparelhoData: Ref<Array<Aparelho>> = ref([])
 const clienteData: Ref<Array<Cliente>> = ref([])
+const equipamentosServicosData: Ref<Array<EquipamentosServicos>> = ref([])
+const servicosData: Ref<Array<Servicos>> = ref([])
 const apiFormData: Ref<OrdemServico> = ref(<OrdemServico>{
   numero: '',
   concluido: false,
   recebido: false,
-  equipamentos: [],
-  servicos: [],
+  equipamentos_servicos: [],
   cliente_id: 0,
   usuario_id: 0
 })
+
+const addEquipmentToServiceOrder = () => {
+  equipmentCount.value++
+  equipamentosServicosData.value.push(<EquipamentosServicos>{})
+  apiFormData.value.equipamentos_servicos = equipamentosServicosData.value
+}
+
+const popEquipmentFromServiceOrder = () => {
+  equipmentCount.value--
+  equipamentosServicosData.value.pop()
+}
 
 const validateData = (): boolean => {
   const isValidNumero = validateInputParameter(numeroController.value, apiFormData.value.numero)
@@ -86,6 +120,29 @@ const getClienteData = async () => {
   })
 }
 
+const getAparelhoData = async () => {
+  await request.get(`/cliente/${apiFormData.value.cliente_id}`).then((res: ApiResponse) => {
+    if (res.status) {
+      //@ts-expect-error
+      aparelhoData.value = res.list['aparelhos'] as Array<Aparelho>
+      aparelhoController.value.isDisabled = false
+    } else {
+      aparelhoController.value.notFound = true
+    }
+  })
+}
+
+const getServiceData = async () => {
+  await request.get('/servico').then((res: ApiResponse) => {
+    if (res.status) {
+      servicosData.value = res.list as Array<Servicos>
+      servicoController.value.isDisabled = false
+    } else {
+      servicoController.value.notFound = true
+    }
+  })
+}
+
 const sendData = async () => {
   buttonHandler(buttonController.value, true)
 
@@ -108,16 +165,37 @@ const sendData = async () => {
     .finally(() => {
       buttonHandler(buttonController.value, false)
       clearServiceOrder(apiFormData.value)
+      clearEquipmentServiceOrder(equipamentosServicosData.value)
+      shouldReload()
     })
 }
 
+const shouldReload = () => {
+  if (equipmentCount.value > 2) {
+    window.location.reload()
+  } else {
+    useGlobalStore().setCloseModalEquipment(true)
+  }
+}
+
+watch(
+  () => apiFormData.value.cliente_id,
+  () => {
+    if (apiFormData.value.cliente_id != 0) {
+      getAparelhoData()
+    } else {
+      aparelhoController.value.isDisabled = true
+    }
+  }
+)
+
 onMounted(() => {
-  Promise.all([getClienteData()]).catch((err) => {
+  Promise.all([getClienteData(), getServiceData()]).catch((err) => {
     console.log('Erro ao buscar dados de api...')
   })
   bindKey('Enter', sendData)
   // apiFormData.value.usuario_id = getSessionUser() as number
-  apiFormData.value.usuario_id = 1
+  apiFormData.value.usuario_id = 2
 })
 </script>
 <template>
@@ -128,14 +206,14 @@ onMounted(() => {
           label="number"
           required
           :reference="apiFormData"
-          referenceName="nome"
+          referenceName="numero"
           :controller="numeroController"
         />
         <SGSDivider />
-        <SGSCheckbox label="finished" :reference="apiFormData" referenceName="concluido" />
-        <SGSDivider />
-        <SGSCheckbox label="payed" :reference="apiFormData" referenceName="recebido" />
-        <SGSDivider />
+        <div class="flex flex-row items-center justify-center">
+          <SGSCheckbox label="finished" :reference="apiFormData" referenceName="concluido" />
+          <SGSCheckbox label="payed" :reference="apiFormData" referenceName="recebido" />
+        </div>
         <SGSSelect
           label="client"
           :items="clienteData"
@@ -145,6 +223,36 @@ onMounted(() => {
           referenceName="cliente_id"
           required
         />
+        <SGSDivider />
+        <SGSAddEquipmentService
+          v-for="count in equipmentCount"
+          :key="count"
+          label="add-equipment"
+          @add-item="addEquipmentToServiceOrder"
+          @pop-item="popEquipmentFromServiceOrder"
+        >
+          <template #item>
+            <SGSSelect
+              label="equipment"
+              :items="aparelhoData"
+              :track="{ field: 'id', name: 'nome' }"
+              :controller="aparelhoController"
+              :reference="equipamentosServicosData[count - 1]"
+              referenceName="aparelho_id"
+              required
+            />
+            <SGSDivider />
+            <!-- select many -->
+            <SGSSelectMany
+              :items="servicosData"
+              label="yes"
+              :track="{ field: 'id', name: 'descricao' }"
+              :reference="equipamentosServicosData[count - 1]"
+              referenceName="servicos"
+              required
+            />
+          </template>
+        </SGSAddEquipmentService>
       </template>
       <template #handler>
         <SGSButton @click="sendData" label="create-service-order" :controller="buttonController" />

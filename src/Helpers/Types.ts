@@ -46,11 +46,22 @@ export interface OrdemServico {
   numero: String
   concluido: boolean
   recebido: boolean
-  equipamentos: Array<any>
-  servicos: Array<any>
+  equipamentos_servicos: Array<EquipamentosServicos>
   cliente_id: Number
   usuario_id: Number
 }
+
+export interface EquipamentosServicos {
+  aparelho_id: Number
+  servicos: Array<Number>
+}
+
+export interface Servicos {
+  preco: String
+  descricao: String
+  usuario_id: Number
+}
+
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */

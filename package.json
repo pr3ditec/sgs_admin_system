@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@bhplugin/vue3-datatable": "^1.1.4",
-    "@suadelabs/vue3-multiselect": "^1.0.2",
     "@vueuse/core": "^10.7.1",
     "apexcharts": "^3.45.1",
     "axios": "^1.7.2",

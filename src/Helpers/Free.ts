@@ -2,6 +2,7 @@ import type {
   Aparelho,
   Cidade,
   Cliente,
+  EquipamentosServicos,
   OrdemServico,
   PermissaoUsuario,
   TipoUsuario,
@@ -23,10 +24,15 @@ const clearServiceOrder = (formData: OrdemServico) => {
   formData.numero = ''
   formData.concluido = false
   formData.recebido = false
-  formData.equipamentos = []
-  formData.servicos = []
+  formData.equipamentos_servicos = []
   formData.cliente_id = 0
-  formData.usuario_id = 0
+}
+
+const clearEquipmentServiceOrder = (formData: Array<EquipamentosServicos>) => {
+  formData.forEach((item) => {
+    item.aparelho_id = 0
+    item.servicos = []
+  })
 }
 
 const clearPermissionUserData = (formData: PermissaoUsuario) => {
@@ -65,5 +71,6 @@ export {
   clearCityData,
   clearClientData,
   clearEquipmentData,
-  clearServiceOrder
+  clearServiceOrder,
+  clearEquipmentServiceOrder
 }

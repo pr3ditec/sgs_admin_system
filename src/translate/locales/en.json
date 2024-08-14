@@ -109,5 +109,9 @@
   "person-type": "Person type must be selected",
   "type": "Type",
   "finished": "Received",
-  "payed": "Payed"
+  "payed": "Payed",
+  "description": "Description",
+  "price": "Price",
+  "add-equipment": "Add equipment",
+  "add-service": "Add service"
 }

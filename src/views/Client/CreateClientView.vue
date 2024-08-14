@@ -166,7 +166,8 @@ onMounted(() => {
     console.log('Erro ao buscar dados de api')
   })
   bindKey('Enter', sendData)
-  apiFormData.value.usuario_id = getSessionUser() as number
+  // apiFormData.value.usuario_id = getSessionUser() as number
+  apiFormData.value.usuario_id = 1
 })
 </script>
 <template>

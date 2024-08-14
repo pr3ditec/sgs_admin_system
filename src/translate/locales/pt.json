@@ -110,5 +110,9 @@
   "person-type": "Tipo de pessoa precisa ser selecionado",
   "type": "Tipo",
   "finished": "Recebido",
-  "payed": "Pago"
+  "payed": "Pago",
+  "description": "Descrição",
+  "price": "Preço",
+  "add-equipment": "Adicionar equipamento",
+  "add-service": "Adicionar Serviço"
 }

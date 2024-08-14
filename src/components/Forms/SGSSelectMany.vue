@@ -15,15 +15,17 @@
  * @method updateValue passa o valor para o componente pai
  */
 import { ref, watch } from 'vue'
-import Multiselect from '@suadelabs/vue3-multiselect'
-import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css'
+//@ts-expect-error
+import Multiselect from '@/vendor/vue3-multiselect/Multiselect.vue'
+import Translate from '@/translate'
 
 const props = defineProps({
   items: Array,
   label: String,
   required: Boolean,
-  valueField: String,
-  valueName: String,
+  track: Object,
+  reference: Object,
+  referenceName: String,
   isDisabled: Boolean,
   isEmpty: Boolean,
   notFound: Boolean
@@ -34,32 +36,32 @@ const emits = defineEmits(['updateValue'])
 const selectableValue = ref('')
 watch(selectableValue, () => {
   if (selectableValue.value.length < 1) {
-    emits('updateValue', 0)
+    props.reference![props.referenceName!] = 0
   } else {
-    const dataArray = selectableValue.value.map((data) => {
-      return data[props.valueField]
+    //@ts-expect-error
+    const dataArray = selectableValue.value.map((data: any) => {
+      return data[props.track!.field]
     })
-    emits('updateValue', dataArray)
+    props.reference![props.referenceName!] = dataArray
   }
 })
 </script>
 <template>
-  <p class="mb-0">
-    {{ $t(label) }}
+  <p class="mb-0 dark:text-zinc-200 text-black">
+    {{ Translate.to(label) }}
     <i v-show="required" class="text-danger">*</i>
   </p>
-  <hr class="mt-0 mb-1 w-2/4" />
-  <multiselect
-    v-if="props.items.length"
+  <hr class="dark:text-zinc-200 text-slate-200 mb-2 w-1/2" />
+  <Multiselect
+    v-if="props.items!.length"
     v-model="selectableValue"
     :options="props.items"
-    class="custom-multiselect"
     :searchable="true"
-    :placeholder="$t('select-item')"
-    :label="valueName"
-    :track-by="valueField"
+    :placeholder="Translate.to('select-item')"
+    :label="track!.name"
+    :track-by="track!.field"
     :multiple="true"
-  ></multiselect>
-  <p v-show="notFound" class="text-danger lowercase">{{ $t('not-found') }}</p>
-  <p v-show="isEmpty" class="text-danger lowercase">{{ $t('empty-data') }}</p>
+  ></Multiselect>
+  <p v-show="notFound" class="text-danger lowercase">{{ Translate.to('not-found') }}</p>
+  <p v-show="isEmpty" class="text-danger lowercase">{{ Translate.to('empty-data') }}</p>
 </template>
