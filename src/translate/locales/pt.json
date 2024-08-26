@@ -114,5 +114,8 @@
   "description": "Descrição",
   "price": "Preço",
   "add-equipment": "Adicionar equipamento",
-  "add-service": "Adicionar Serviço"
+  "add-service": "Adicionar Serviço",
+  "login": "Login",
+  "sign-in": "Entrar",
+  "logout-failed": "Falha ao sair de sistema"
 }

@@ -62,6 +62,11 @@ export interface Servicos {
   usuario_id: Number
 }
 
+export interface Login {
+  email: String
+  senha: String
+}
+
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */

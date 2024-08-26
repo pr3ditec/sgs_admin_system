@@ -3,6 +3,7 @@ import type {
   Cidade,
   Cliente,
   EquipamentosServicos,
+  Login,
   OrdemServico,
   PermissaoUsuario,
   TipoUsuario,
@@ -64,6 +65,11 @@ const clearEquipmentData = (formData: Aparelho) => {
   formData.cliente_id = 0
 }
 
+const clearLoginData = (formData: Login) => {
+  formData.email = ''
+  formData.senha = ''
+}
+
 export {
   clearUserData,
   clearUserTypeData,
@@ -72,5 +78,6 @@ export {
   clearClientData,
   clearEquipmentData,
   clearServiceOrder,
-  clearEquipmentServiceOrder
+  clearEquipmentServiceOrder,
+  clearLoginData
 }

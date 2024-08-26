@@ -113,5 +113,8 @@
   "description": "Description",
   "price": "Price",
   "add-equipment": "Add equipment",
-  "add-service": "Add service"
+  "add-service": "Add service",
+  "login": "Login",
+  "sign-in": "Sign-In",
+  "logout-failed": "Logout failed"
 }

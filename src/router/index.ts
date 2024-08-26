@@ -10,11 +10,23 @@ import TablesView from '@/views/TablesView.vue'
 import AlertsView from '@/views/UiElements/AlertsView.vue'
 import ButtonsView from '@/views/UiElements/ButtonsView.vue'
 import Translate from '@/translate'
+import LocalStorageController from '@/Helpers/LocalStorage'
+import axios from 'axios'
 
 const routes = [
-  /** MAIN */
+  /** LOGIN */
   {
     path: '/',
+    name: 'Pagina de login',
+    component: () => import('@/views/Auth/LoginView.vue'),
+    meta: {
+      title: 'login'
+    }
+  },
+  /** LOGIN */
+  /** MAIN */
+  {
+    path: '/dashboard',
     name: 'Pagína inicial',
     component: () => import('@/views/Dashboard/DashboardHomeView.vue'),
     meta: {
@@ -274,9 +286,28 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
+const checkTokenLogin = async (): Promise<boolean> => {
+  const userToken = LocalStorageController.getToken()
+  const isValidToken = await (await axios.get('http://127.0.0.1:8000/auth-check')).data.status
+  
+  if (userToken && isValidToken) {
+    return true
+  } else {
+    return false
+  }
+}
+
+router.beforeEach(async (to, from, next) => {
   document.title = `${Translate.to(to.meta.title)} | SGS`
-  next()
+
+  switch (to.path) {
+    case '/':
+      ;(await checkTokenLogin()) ? next('/dashboard') : next()
+      break
+    default:
+      ;(await checkTokenLogin()) ? next() : next('/')
+      break
+  }
 })
 
 export default router

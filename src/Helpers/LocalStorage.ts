@@ -12,21 +12,30 @@ export default class LocalStorageController {
   static storeToken(token: String) {
     localStorage.setItem('token', token as string)
   }
-  static storeUser(usuario_id: Number) {
-    //@ts-expect-error
-    localStorage.setItem('usuario_id', usuario_id as string)
+  static storeUser(usuario: Object) {
+    localStorage.setItem('usuario', JSON.stringify(usuario))
   }
   /** STORE METHODS */
+
+  /** DESTROY METHODS */
+  static destroyUser() {
+    localStorage.removeItem('usuario')
+  }
+
+  static destroyToken() {
+    localStorage.removeItem('token')
+  }
+  /** DESTROY METHODS */
 
   /** RETRIEVE METHODS */
   static getLang() {
     return localStorage.getItem('lang')
   }
   static getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token') ?? false
   }
   static getUser() {
-    return localStorage.getItem('usuario_id')
+    return JSON.parse(localStorage.getItem('usuario')!)
   }
   /** RETRIEVE METHODS */
 }

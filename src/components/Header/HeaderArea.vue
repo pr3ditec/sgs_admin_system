@@ -26,7 +26,7 @@ import LangModeSwitcher from './LangModeSwitcher.vue'
       <div class="flex flex-row w-full justify-end gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
           <li>
-            <LangModeSwitcher />
+            <!-- <LangModeSwitcher /> -->
           </li>
           <li>
             <!-- Dark Mode Toggler -->
