@@ -7,10 +7,12 @@ import SidebarItem from './SidebarItem.vue'
 import SidebarHeaderLogo from './SidebarHeaderLogo.vue'
 import SidebarReturnButton from './SidebarReturnButton.vue'
 import Translate from '@/translate'
+import LocalStorageController from '@/Helpers/LocalStorage'
 
 const target = ref(null)
 
 const sidebarStore = useSidebarStore()
+const usuarioData = LocalStorageController.getUser()
 
 onClickOutside(target, () => {
   sidebarStore.isSidebarOpen = false
@@ -44,7 +46,7 @@ const menuGroups: any = ref(menuItemGroups)
       <!-- Sidebar Menu -->
       <nav class="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
         <template v-for="menuGroup in menuGroups" :key="menuGroup.name">
-          <div>
+          <div v-if="menuGroup.permission.toLowerCase() == usuarioData.tipo.toLowerCase()">
             <h3 class="mb-4 ml-4 text-md font-medium text-slate-300 uppercase">
               {{ Translate.to(menuGroup.name) }}
             </h3>
