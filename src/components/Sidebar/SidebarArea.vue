@@ -33,7 +33,7 @@ const menuGroups: any = ref(menuItemGroups)
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
       <!-- SIDEBAR HEADER TAMANHO NORMAL -->
-      <SidebarHeaderLogo />
+      <SidebarHeaderLogo w="150" h="100" />
       <!-- SIDEBAR HEADER TAMANHO NORMAL -->
 
       <!-- BOTAO DE FECHAR SIDEBAR EM MODO SMARTPHONE -->

@@ -95,7 +95,7 @@ onMounted(() => {
     <div
       class="flex flex-col bg-slate-800 dark:bg-slate-900 w-1/2 h-screen items-center justify-center"
     >
-      <SidebarHeaderLogo />
+      <SidebarHeaderLogo w="350" h="300" />
     </div>
     <div
       class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center dark:bg-slate-800"
