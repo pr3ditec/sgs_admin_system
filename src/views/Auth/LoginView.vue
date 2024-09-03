@@ -2,6 +2,7 @@
 import SGSButton from '@/components/Buttons/SGSButton.vue'
 import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSPassword from '@/components/Forms/SGSPassword.vue'
+import DarkModeSwitcher from '@/components/Header/DarkModeSwitcher.vue'
 import SidebarHeaderLogo from '@/components/Sidebar/SidebarHeaderLogo.vue'
 import { bindKey } from '@/Helpers/Binder'
 import { clearLoginData } from '@/Helpers/Free'
@@ -100,6 +101,7 @@ onMounted(() => {
     <div
       class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center dark:bg-slate-800"
     >
+      <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-400 mb-5">Entrar no SGS</h3>
       <SGSInput
         label="email"
         required
@@ -115,6 +117,10 @@ onMounted(() => {
         :controller="senhaController"
       />
       <SGSButton @click="sendData" label="sign-in" :controller="buttonController" />
+      <div class="flex flex-col mx-auto mt-3 gap-2">
+        <p class="underline cursor-pointer">Esqueceu a senha?</p>
+        <p class="underline cursor-pointer">Solicite uma conta</p>
+      </div>
     </div>
   </main>
 </template>
