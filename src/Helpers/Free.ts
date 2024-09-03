@@ -6,6 +6,7 @@ import type {
   Login,
   OrdemServico,
   PermissaoUsuario,
+  Servicos,
   TipoUsuario,
   Usuario
 } from './Types'
@@ -70,6 +71,11 @@ const clearLoginData = (formData: Login) => {
   formData.senha = ''
 }
 
+const clearServiceData = (formData: Servicos) => {
+  formData.descricao = ''
+  formData.preco = ""
+}
+
 export {
   clearUserData,
   clearUserTypeData,
@@ -79,5 +85,6 @@ export {
   clearEquipmentData,
   clearServiceOrder,
   clearEquipmentServiceOrder,
-  clearLoginData
+  clearLoginData,
+  clearServiceData
 }

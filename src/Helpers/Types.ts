@@ -59,7 +59,6 @@ export interface EquipamentosServicos {
 export interface Servicos {
   preco: String
   descricao: String
-  usuario_id: Number
 }
 
 export interface Login {

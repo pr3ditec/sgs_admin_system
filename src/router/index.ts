@@ -1,17 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-import SigninView from '@/views/Authentication/SigninView.vue'
-import SignupView from '@/views/Authentication/SignupView.vue'
-import BasicChartView from '@/views/Charts/BasicChartView.vue'
-import FormElementsView from '@/views/Forms/FormElementsView.vue'
-import FormLayoutView from '@/views/Forms/FormLayoutView.vue'
-import SettingsView from '@/views/Pages/SettingsView.vue'
-import TablesView from '@/views/TablesView.vue'
-import AlertsView from '@/views/UiElements/AlertsView.vue'
-import ButtonsView from '@/views/UiElements/ButtonsView.vue'
 import Translate from '@/translate'
 import LocalStorageController from '@/Helpers/LocalStorage'
 import axios from 'axios'
+import { useGlobalStore } from '@/stores/global'
 
 const routes = [
   /** LOGIN */
@@ -130,6 +121,25 @@ const routes = [
   },
   /** ORDEM DE SERVICO */
 
+  /** SERVICO */
+  {
+    path: '/service/create',
+    name: 'Criar serviços',
+    component: () => import('@/views/Service/CreateServiceView.vue'),
+    meta: {
+      title: 'create-service'
+    }
+  },
+  {
+    path: '/service/list',
+    name: 'Listar serviços',
+    component: () => import('@/views/Service/ListServiceView.vue'),
+    meta: {
+      title: 'list-service'
+    }
+  },
+  /** SERVICO */
+
   /** CLIENTE */
   {
     path: '/client/create',
@@ -184,98 +194,8 @@ const routes = [
     meta: {
       title: 'list-city'
     }
-  },
-  /** CIDADE */
-
-  // ROTAS DO TEMPLATE
-  {
-    path: '/calendar',
-    name: 'calendar',
-    component: () => import('@/views/CalendarView.vue'),
-    meta: {
-      title: 'Calendar'
-    }
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: () => import('@/views/ProfileView.vue'),
-    meta: {
-      title: 'Profile'
-    }
-  },
-  {
-    path: '/forms/form-elements',
-    name: 'formElements',
-    component: FormElementsView,
-    meta: {
-      title: 'Form Elements'
-    }
-  },
-  {
-    path: '/forms/form-layout',
-    name: 'formLayout',
-    component: FormLayoutView,
-    meta: {
-      title: 'Form Layout'
-    }
-  },
-  {
-    path: '/tables',
-    name: 'tables',
-    component: TablesView,
-    meta: {
-      title: 'Tables'
-    }
-  },
-  {
-    path: '/pages/settings',
-    name: 'settings',
-    component: SettingsView,
-    meta: {
-      title: 'Settings'
-    }
-  },
-  {
-    path: '/charts/basic-chart',
-    name: 'basicChart',
-    component: BasicChartView,
-    meta: {
-      title: 'Basic Chart'
-    }
-  },
-  {
-    path: '/ui-elements/alerts',
-    name: 'alerts',
-    component: AlertsView,
-    meta: {
-      title: 'Alerts'
-    }
-  },
-  {
-    path: '/ui-elements/buttons',
-    name: 'buttons',
-    component: ButtonsView,
-    meta: {
-      title: 'Buttons'
-    }
-  },
-  {
-    path: '/auth/signin',
-    name: 'signin',
-    component: SigninView,
-    meta: {
-      title: 'Signin'
-    }
-  },
-  {
-    path: '/auth/signup',
-    name: 'signup',
-    component: SignupView,
-    meta: {
-      title: 'Signup'
-    }
   }
+  /** CIDADE */
 ]
 
 const router = createRouter({
@@ -289,7 +209,7 @@ const router = createRouter({
 const checkTokenLogin = async (): Promise<boolean> => {
   const userToken = LocalStorageController.getToken()
   const isValidToken = await (await axios.get('http://127.0.0.1:8000/auth-check')).data.status
-  
+
   if (userToken && isValidToken) {
     return true
   } else {
@@ -298,6 +218,11 @@ const checkTokenLogin = async (): Promise<boolean> => {
 }
 
 router.beforeEach(async (to, from, next) => {
+  const request = useGlobalStore().request
+  if (LocalStorageController.getToken()) {
+    //@ts-expect-error
+    request.setToken(LocalStorageController.getToken())
+  }
   document.title = `${Translate.to(to.meta.title)} | SGS`
 
   switch (to.path) {

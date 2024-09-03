@@ -43,7 +43,6 @@ const getServiceOrderData = async () => {
   await request
     .get('/calendario')
     .then((res: ApiResponse) => {
-      console.log(res)
       if (res.status) {
         calendarOptions.value.events = res.list as Array<OrdemServico>
       }

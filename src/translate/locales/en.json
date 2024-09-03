@@ -116,5 +116,8 @@
   "add-service": "Add service",
   "login": "Login",
   "sign-in": "Sign-In",
-  "logout-failed": "Logout failed"
+  "logout-failed": "Logout failed",
+  "services": "Services",
+  "create-service": "Create services",
+  "list-service": "List services"
 }

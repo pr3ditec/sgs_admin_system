@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default class LocalStorageController {
   /**
    * Classe que funciona como uma biblioteca para utilizar o localstorage

@@ -66,6 +66,8 @@ const sendData = async () => {
     .then((res: ApiResponse) => {
       if (res.status) {
         //@ts-expect-error
+        request.setToken(res.list.login.token)
+        //@ts-expect-error
         LocalStorageController.storeToken(res.list.login.token)
         //@ts-expect-error
         LocalStorageController.storeUser(res.list.usuario)
@@ -90,10 +92,14 @@ onMounted(() => {
 </script>
 <template>
   <main class="flex flex-row">
-    <div class="flex flex-col bg-slate-800 w-1/2 h-screen items-center justify-center">
+    <div
+      class="flex flex-col bg-slate-800 dark:bg-slate-900 w-1/2 h-screen items-center justify-center"
+    >
       <SidebarHeaderLogo />
     </div>
-    <div class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center">
+    <div
+      class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center dark:bg-slate-800"
+    >
       <SGSInput
         label="email"
         required

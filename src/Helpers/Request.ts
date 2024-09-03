@@ -1,4 +1,5 @@
 import axios from 'axios'
+import LocalStorageController from './LocalStorage'
 
 export default class Request {
   private request: any
@@ -6,10 +7,10 @@ export default class Request {
 
   constructor() {
     this.request = axios.create({
-      timeout: 10000,
-      headers: {
-        // Authorization: `Bearer ${token ?? localStorage.getItem('user.token')}`
-      }
+      timeout: 10000
+      // headers: {
+      //   Authorization: `Bearer ${localStorage.getItem('user.token')}`
+      // }
     })
   }
 
@@ -74,5 +75,10 @@ export default class Request {
         }
       }
     }
+  }
+
+  public async setToken(token: string) {
+    const bearerToken = `Bearer ${token}`
+    this.request.defaults.headers.common['Authorization'] = `${bearerToken}`
   }
 }

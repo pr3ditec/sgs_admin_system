@@ -117,5 +117,8 @@
   "add-service": "Adicionar Serviço",
   "login": "Login",
   "sign-in": "Entrar",
-  "logout-failed": "Falha ao sair de sistema"
+  "logout-failed": "Falha ao sair de sistema",
+  "services": "Serviços",
+  "create-service": "Criar serviço",
+  "list-service": "Listar serviços"
 }
