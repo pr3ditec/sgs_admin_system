@@ -48,7 +48,6 @@ const updateServiceOrder = async (id: number) => {
   await request
     .update(`/dashboard/${id}`)
     .then((res: ApiResponse) => {
-      console.log(res)
       if (res.status) {
         Response.show('success', 'updated-service-date')
         emits('refreshData')

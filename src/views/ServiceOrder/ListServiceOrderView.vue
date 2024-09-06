@@ -68,7 +68,6 @@ const getServiceOrderData = async () => {
 }
 const deleteData = async (id: Number) => {
   await request.destroy(`/ordem-servico/${id}`).then((res: ApiResponse) => {
-    console.log(res)
     if (res.status) {
       getServiceOrderData()
       Response.show('success', res.messageCode)

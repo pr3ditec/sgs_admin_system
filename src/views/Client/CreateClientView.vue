@@ -169,7 +169,6 @@ const sendData = async () => {
   await request
     .store('/cliente', insertData)
     .then((res: ApiResponse) => {
-      console.log(res)
       if (res.status) {
         Response.show('success', res.messageCode)
       } else {

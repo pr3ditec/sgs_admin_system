@@ -64,7 +64,6 @@ const sendData = async () => {
   await request
     .store('/servico', apiFormData.value)
     .then((res: ApiResponse) => {
-      console.log(res)
       if (res.status) {
         Response.show('success', res.messageCode)
       } else {
