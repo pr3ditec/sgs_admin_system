@@ -26,7 +26,6 @@ import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import SGSAddress from '@/components/Forms/SGSAddress.vue'
 import SGSOptional from '@/components/Forms/SGSOptional.vue'
 import Translate from '@/translate'
-import { getSessionUser } from '@/Helpers/SessionUser'
 
 const request = useGlobalStore().request
 
@@ -86,6 +85,11 @@ const inscricaoMunicipalController: Ref<InputController> = ref({
   isEmpty: false
 })
 
+const telefoneController: Ref<InputController> = ref({
+  isDisabled: false,
+  isEmpty: false
+})
+
 const cidadeData: Ref<Array<Cidade>> = ref([])
 //@ts-expect-error
 const apiFormData: Ref<Cliente> = ref(<Cliente>{
@@ -94,18 +98,30 @@ const apiFormData: Ref<Cliente> = ref(<Cliente>{
   cep: '',
   complemento: '',
   numero: '',
+  telefone: '',
   cidade_id: 0,
   usuario_id: 0
 })
+var apiFormDataSanitazied: Cliente = <Cliente>{}
 
-const sanitazeData = () => {
-  apiFormData.value.cpf = apiFormData.value.cpf.replace!(/\D/g, '')
-  apiFormData.value.cnpj = apiFormData.value.cpf.replace!(/\D/g, '')
-  apiFormData.value.cep = apiFormData.value.cpf.replace!(/\D/g, '')
+const sanitazeData = async () => {
+  apiFormDataSanitazied = { ...apiFormData.value }
+  try {
+    //@ts-expect-error
+    apiFormDataSanitazied.cpf = apiFormDataSanitazied.cpf.replace(/\D/g, '')
+  } catch (e) {
+    try {
+      //@ts-expect-error
+      apiFormDataSanitazied.cnpj = apiFormDataSanitazied.cnpj.replace(/\D/g, '')
+    } catch (e) {}
+  }
+  apiFormDataSanitazied.cep = apiFormDataSanitazied.cep.replace(/\D/g, '')
+  apiFormDataSanitazied.telefone = apiFormDataSanitazied.telefone.replace(/\D/g, '')
+
+  return apiFormDataSanitazied
 }
 
 const validateData = (): boolean => {
-  sanitazeData()
   const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
   const isValidLogradouro = validateInputParameter(
     logradouroController.value,
@@ -146,13 +162,14 @@ const destroyItem = (items: Array<string>) => {
 
 const sendData = async () => {
   buttonHandler(buttonController.value, true)
-
+  const insertData = await sanitazeData()
   if (!validateData()) {
     return buttonHandler(buttonController.value, false)
   }
   await request
-    .store('/cliente', apiFormData.value)
+    .store('/cliente', insertData)
     .then((res: ApiResponse) => {
+      console.log(res)
       if (res.status) {
         Response.show('success', res.messageCode)
       } else {
@@ -189,6 +206,16 @@ onMounted(() => {
           :controller="nomeController"
         />
         <SGSDivider />
+        <SGSInput
+          label="phone"
+          :mask="'(##)#####-####'"
+          required
+          :reference="apiFormData"
+          referenceName="telefone"
+          :controller="telefoneController"
+        />
+        <SGSDivider />
+
         <SGSAddress>
           <template #cep>
             <SGSInput

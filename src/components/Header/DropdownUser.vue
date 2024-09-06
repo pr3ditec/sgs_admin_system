@@ -20,7 +20,6 @@ onClickOutside(target, () => {
 
 const logout = async () => {
   await request.store('/logout').then((res: ApiResponse) => {
-    console.log(res)
     if (res.status) {
       LocalStorageController.destroyToken()
       LocalStorageController.destroyUser()

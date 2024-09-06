@@ -69,7 +69,6 @@ const getStatesData = async () => {
 }
 
 const getCityData = async () => {
-  console.log(apiFormData.value.uf)
   await axios
     .get(
       `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${apiFormData.value.uf}/distritos`

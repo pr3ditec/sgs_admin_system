@@ -16,7 +16,7 @@ const props = defineProps({
   header: Array,
   result: Array
 })
-const emits = defineEmits(['deleteData', 'editData'])
+const emits = defineEmits(['updateData'])
 
 const searchController: Ref<SearchController> = ref(<SearchController>{
   value: ''
@@ -25,7 +25,7 @@ const searchController: Ref<SearchController> = ref(<SearchController>{
 const modalDeleteData = (id: Number) => {
   swal({
     icon: 'warning',
-    text: Translate.to('delete-data'),
+    text: Translate.to('update-service-order'),
     buttons: {
       confirm: {
         text: Translate.to('yes')
@@ -33,7 +33,7 @@ const modalDeleteData = (id: Number) => {
     }
   }).then((res) => {
     if (res) {
-      emits('deleteData', id)
+      emits('updateData', id)
     }
   })
 }
@@ -54,15 +54,10 @@ const router = useRouter()
     <template #actions="data">
       <div class="flex flex-row gap-1">
         <span class="cursor-pointer w-20 flex flex-row gap-2">
-          <!-- <a
-            @click="emits('editData', data.value.id)"
-            class="text-sky-800 dark:text-sky-400 underline"
-            >{{ Translate.to('edit') }}</a
-          > -->
           <a
             @click="modalDeleteData(data.value.id)"
-            class="cursor-pointer text-black-600 dark:text-orange-600 underline"
-            >{{ Translate.to('delete') }}</a
+            class="cursor-pointer text-black-600 dark:text-blue-600 underline"
+            >{{ Translate.to('mark-as-updated') }}</a
           >
         </span>
       </div>

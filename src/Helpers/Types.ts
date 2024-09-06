@@ -29,6 +29,7 @@ export interface Cliente {
   numero: String
   complemento: String
   cidade_id: Number
+  telefone: String
   cpf: Partial<String>
   cnpj: Partial<String>
   inscricao_municipal: Partial<String>
@@ -40,6 +41,12 @@ export interface Aparelho {
   nome: String
   tipo: String
   cliente_id: Number
+}
+
+export interface Parametros {
+  total_ordem_servico: number
+  ultimos_30_dias: number
+  mes_atual: number
 }
 
 export interface OrdemServico {

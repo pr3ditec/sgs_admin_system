@@ -120,5 +120,9 @@
   "logout-failed": "Falha ao sair de sistema",
   "services": "Serviços",
   "create-service": "Criar serviço",
-  "list-service": "Listar serviços"
+  "list-service": "Listar serviços",
+  "phone": "Telefone",
+  "admin-welcome": "Olá administrador, seja bem vindo novamente",
+  "mark-as-updated": "Re-atendido",
+  "update-service-order": "Atualizar data de ordem de serviço"
 }

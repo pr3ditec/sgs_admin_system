@@ -56,6 +56,7 @@ const clearClientData = (formData: Cliente) => {
   formData.complemento = ''
   formData.cpf = ''
   formData.cnpj = ''
+  formData.telefone = ''
   formData.inscricao_estadual = ''
   formData.inscricao_municipal = ''
 }
@@ -73,7 +74,7 @@ const clearLoginData = (formData: Login) => {
 
 const clearServiceData = (formData: Servicos) => {
   formData.descricao = ''
-  formData.preco = ""
+  formData.preco = ''
 }
 
 export {

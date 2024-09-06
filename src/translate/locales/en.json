@@ -119,5 +119,9 @@
   "logout-failed": "Logout failed",
   "services": "Services",
   "create-service": "Create services",
-  "list-service": "List services"
+  "list-service": "List services",
+  "phone": "Phone",
+  "admin-welcome": "Hellow Administrator, what do you want to do?",
+  "mark-as-updated": "Mark as updated",
+  "update-service-order": "Update service order date"
 }
