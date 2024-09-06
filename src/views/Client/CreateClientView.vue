@@ -98,7 +98,14 @@ const apiFormData: Ref<Cliente> = ref(<Cliente>{
   usuario_id: 0
 })
 
+const sanitazeData = () => {
+  apiFormData.value.cpf = apiFormData.value.cpf.replace!(/\D/g, '')
+  apiFormData.value.cnpj = apiFormData.value.cpf.replace!(/\D/g, '')
+  apiFormData.value.cep = apiFormData.value.cpf.replace!(/\D/g, '')
+}
+
 const validateData = (): boolean => {
+  sanitazeData()
   const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
   const isValidLogradouro = validateInputParameter(
     logradouroController.value,
@@ -185,6 +192,7 @@ onMounted(() => {
         <SGSAddress>
           <template #cep>
             <SGSInput
+              :mask="'#####-###'"
               label="cep"
               required
               :reference="apiFormData"
@@ -204,6 +212,7 @@ onMounted(() => {
           <template #numero>
             <SGSInput
               label="number"
+              :mask="'#####'"
               required
               :reference="apiFormData"
               referenceName="numero"
@@ -236,6 +245,7 @@ onMounted(() => {
         <SGSOptional v-if="!apiFormData.cnpj" label="normal-person" @destroy="destroyItem(['cpf'])">
           <SGSInput
             label="cpf"
+            :mask="'###.###.###-##'"
             :reference="apiFormData"
             referenceName="cpf"
             :controller="cpfController"
@@ -250,6 +260,7 @@ onMounted(() => {
         >
           <SGSInput
             label="cnpj"
+            :mask="'##.###.###/####-##'"
             :reference="apiFormData"
             referenceName="cnpj"
             :controller="cnpjController"
@@ -257,6 +268,7 @@ onMounted(() => {
           <SGSDivider />
           <SGSInput
             label="state-register"
+            :mask="'###############'"
             :reference="apiFormData"
             referenceName="inscricao_estadual"
             :controller="inscricaoEstadualController"
@@ -264,6 +276,7 @@ onMounted(() => {
           <SGSDivider />
           <SGSInput
             label="local-register"
+            :mask="'###############'"
             :reference="apiFormData"
             referenceName="inscricao_municipal"
             :controller="inscricaoMunicipalController"
