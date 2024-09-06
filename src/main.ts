@@ -12,10 +12,12 @@ import Translate from './translate'
 
 //@ts-expect-error
 import VueTheMask from 'vue-the-mask'
+import VueMoney from 'v-money'
 
 const app = createApp(App)
 
 app.use(VueTheMask)
+app.use(VueMoney, { precision: 4 })
 
 app.use(createPinia())
 app.use(router)

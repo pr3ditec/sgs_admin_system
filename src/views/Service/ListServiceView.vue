@@ -33,7 +33,7 @@ const headerController: Ref<Array<HeaderTableController>> = ref([
   },
   {
     field: 'preco',
-    title: Translate.to('price'),
+    title: Translate.to('price') + ' (R$)',
     headerClass: 'flex flex-row gap-1 font-bold uppercase'
   },
   {

@@ -8,7 +8,7 @@ import { useGlobalStore } from '@/stores/global'
 import { Response } from '@/Helpers/Response'
 import { clearServiceData } from '@/Helpers/Free'
 import { bindKey } from '@/Helpers/Binder'
-import type { ApiResponse, ButtonController, InputController } from '@/Helpers/Types'
+import type { ApiResponse, ButtonController, InputController, Servicos } from '@/Helpers/Types'
 import { buttonHandler, validateInputParameter } from '@/Helpers/Validator'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import FormLayout from '@/layouts/FormLayout.vue'
@@ -16,6 +16,7 @@ import SGSButton from '@/components/Buttons/SGSButton.vue'
 import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSFormHelper from '@/components/Forms/SGSFormHelper.vue'
+import SGSMoneyInput from '@/components/Forms/SGSMoneyInput.vue'
 
 const request = useGlobalStore().request
 
@@ -33,12 +34,17 @@ const priceController: Ref<InputController> = ref({
   isDisabled: false
 })
 
-const apiFormData: Ref<any> = ref(<any>{
+const apiFormData: Ref<Servicos> = ref(<any>{
   descricao: '',
   preco: ''
 })
 
+const sanitazeMoney = () => {
+  apiFormData.value.preco = apiFormData.value.preco.substring(3)
+}
+
 const validateData = (): boolean => {
+  sanitazeMoney()
   const isValidDescription = validateInputParameter(
     descriptionController.value,
     apiFormData.value.descricao
@@ -93,7 +99,7 @@ onMounted(() => {
           :controller="descriptionController"
         />
         <SGSDivider />
-        <SGSInput
+        <SGSMoneyInput
           label="price"
           required
           :reference="apiFormData"
