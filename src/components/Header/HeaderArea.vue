@@ -4,7 +4,7 @@ import DropdownMessage from './DropdownMessage.vue'
 import DropdownNotification from './DropdownNotification.vue'
 import DropdownUser from './DropdownUser.vue'
 import HeaderHamburgerButton from './HeaderHamburgerButton.vue'
-import HeaderLogoSmartphone from './HeaderLogoSmartphone.vue'
+// import HeaderLogoSmartphone from './HeaderLogoSmartphone.vue'
 import LangModeSwitcher from './LangModeSwitcher.vue'
 </script>
 
