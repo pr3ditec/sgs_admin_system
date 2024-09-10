@@ -213,10 +213,10 @@ onMounted(() => {
           :controller="numeroController"
         />
         <SGSDivider />
-        <div class="flex flex-row items-center justify-center">
+        <!-- <div class="flex flex-row items-center justify-center">
           <SGSCheckbox label="finished" :reference="apiFormData" referenceName="concluido" />
           <SGSCheckbox label="payed" :reference="apiFormData" referenceName="recebido" />
-        </div>
+        </div> -->
         <SGSSelect
           label="client"
           :items="clienteData"
