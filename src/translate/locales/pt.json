@@ -124,5 +124,6 @@
   "phone": "Telefone",
   "admin-welcome": "Olá administrador, seja bem vindo novamente",
   "mark-as-updated": "Re-atendido",
-  "update-service-order": "Atualizar data de ordem de serviço"
+  "update-service-order": "Atualizar data de ordem de serviço",
+  "serial-number": "Número de série"
 }

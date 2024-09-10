@@ -31,6 +31,11 @@ const buttonController: Ref<ButtonController> = ref({
   isDisabled: false
 })
 
+const numeroSerieController: Ref<InputController> = ref({
+  isEmpty: false,
+  isDisabled: false
+})
+
 const nomeController: Ref<InputController> = ref({
   isEmpty: false,
   isDisabled: false
@@ -50,12 +55,17 @@ const clientController: Ref<SelectController> = ref({
 const clientData: Ref<Array<Cliente>> = ref([])
 
 const apiFormData: Ref<Aparelho> = ref(<Aparelho>{
+  numero_serie: '',
   nome: '',
   tipo: '',
   cliente_id: 0
 })
 
 const validateData = (): boolean => {
+  const isValidNumeroSerie = validateInputParameter(
+    numeroSerieController.value,
+    apiFormData.value.numero_serie
+  )
   const isValidNome = validateInputParameter(nomeController.value, apiFormData.value.nome)
   const isValidTipo = validateInputParameter(tipoController.value, apiFormData.value.tipo)
   const isValidCliente = validateSelectParameter(
@@ -63,7 +73,7 @@ const validateData = (): boolean => {
     apiFormData.value.cliente_id
   )
 
-  return isValidNome && isValidTipo && isValidCliente
+  return isValidNome && isValidTipo && isValidCliente && isValidNumeroSerie
 }
 
 const getClientData = async () => {
@@ -113,6 +123,14 @@ onMounted(() => {
   <DefaultLayout>
     <FormLayout title="create-equipment" :push="{ label: 'list-equipment', to: '/equipment/list' }">
       <template #body>
+        <SGSInput
+          label="serial-number"
+          required
+          :reference="apiFormData"
+          referenceName="numero_serie"
+          :controller="numeroSerieController"
+        />
+        <SGSDivider />
         <SGSInput
           label="name"
           required

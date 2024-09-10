@@ -62,6 +62,7 @@ const clearClientData = (formData: Cliente) => {
 }
 
 const clearEquipmentData = (formData: Aparelho) => {
+  formData.numero_serie = ''
   formData.nome = ''
   formData.tipo = ''
   formData.cliente_id = 0

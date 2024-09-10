@@ -123,5 +123,6 @@
   "phone": "Phone",
   "admin-welcome": "Hellow Administrator, what do you want to do?",
   "mark-as-updated": "Mark as updated",
-  "update-service-order": "Update service order date"
+  "update-service-order": "Update service order date",
+  "serial-number": "Serial Number"
 }

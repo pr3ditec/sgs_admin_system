@@ -38,6 +38,7 @@ export interface Cliente {
 }
 
 export interface Aparelho {
+  numero_serie: String
   nome: String
   tipo: String
   cliente_id: Number
