@@ -31,18 +31,23 @@ const headerController: Ref<Array<HeaderTableController>> = ref([
     title: Translate.to('number'),
     headerClass: 'flex flex-row gap-1 font-bold uppercase'
   },
-  {
-    field: 'recebido',
-    title: Translate.to('payed'),
-    headerClass: 'flex flex-row gap-1 font-bold uppercase',
-    //@ts-expect-error
-    cellRenderer: (data) => {
-      return data.recebido ? Translate.to('yes') : Translate.to('no')
-    }
-  },
+  // {
+  //   field: 'recebido',
+  //   title: Translate.to('payed'),
+  //   headerClass: 'flex flex-row gap-1 font-bold uppercase',
+  //   //@ts-expect-error
+  //   cellRenderer: (data) => {
+  //     return data.recebido ? Translate.to('yes') : Translate.to('no')
+  //   }
+  // },
   {
     field: 'cliente.nome',
     title: Translate.to('client'),
+    headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  },
+  {
+    field: 'cliente.telefone',
+    title: Translate.to('phone'),
     headerClass: 'flex flex-row gap-1 font-bold uppercase'
   },
   {
