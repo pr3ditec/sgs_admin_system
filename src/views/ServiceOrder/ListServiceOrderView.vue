@@ -8,6 +8,7 @@ import type {
   TableCotnroller
 } from '@/Helpers/Types'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
 import { useGlobalStore } from '@/stores/global'
 import Translate from '@/translate'
 import { onMounted, ref, type Ref } from 'vue'
@@ -85,12 +86,19 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSTable
-      :isLoading="tableController.isLoading"
-      :header="headerController"
-      :result="serviceOrderData"
-      @editData="(id: Number) => router.push(`/service-order/${id}`)"
-      @deleteData="deleteData"
-    />
+    <FormLayout
+      title="service-order"
+      :push="{ label: 'create-service-order', to: '/service-order/create' }"
+    >
+      <template #body>
+        <SGSTable
+          :isLoading="tableController.isLoading"
+          :header="headerController"
+          :result="serviceOrderData"
+          @editData="(id: Number) => router.push(`/service-order/${id}`)"
+          @deleteData="deleteData"
+        />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

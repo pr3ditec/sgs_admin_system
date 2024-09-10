@@ -112,7 +112,7 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="add-permission">
+    <FormLayout title="add-permission" :push="{ label: 'list-permission', to: '/permission/list' }">
       <template #body>
         <SGSSelect
           :items="userData"

@@ -69,7 +69,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-permission">
+    <FormLayout
+      title="create-permission"
+      :push="{ label: 'list-permission', to: '/permission/list' }"
+    >
       <template #body>
         <SGSInput
           label="name"

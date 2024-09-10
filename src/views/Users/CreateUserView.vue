@@ -122,10 +122,7 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-user">
-      <template #helper>
-        <SGSFormHelper />
-      </template>
+    <FormLayout title="create-user" :push="{ label: 'list-user', to: '/user/list' }">
       <template #body>
         <SGSInput
           label="name"

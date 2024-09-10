@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
-import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -81,13 +81,16 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSTable
-      :isLoading="tableController.isLoading"
-      :header="headerController"
-      :result="userData"
-      @editData="(id: Number) => router.push(`/users/${id}`)"
-      @deleteData="deleteData"
-    />
-    <SGSTableHelper />
+    <FormLayout title="users" :push="{ label: 'create-user', to: '/user/create' }">
+      <template #body>
+        <SGSTable
+          :isLoading="tableController.isLoading"
+          :header="headerController"
+          :result="userData"
+          @editData="(id: Number) => router.push(`/users/${id}`)"
+          @deleteData="deleteData"
+        />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

@@ -85,10 +85,7 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-service">
-      <template #helper>
-        <SGSFormHelper />
-      </template>
+    <FormLayout title="create-service" :push="{ label: 'list-service', to: '/service/list' }">
       <template #body>
         <SGSInput
           label="description"

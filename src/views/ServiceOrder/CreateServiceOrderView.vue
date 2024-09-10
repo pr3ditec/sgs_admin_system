@@ -200,7 +200,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-service-order">
+    <FormLayout
+      title="create-service-order"
+      :push="{ label: 'list-service-order', to: '/service-order/list' }"
+    >
       <template #body>
         <SGSInput
           label="number"

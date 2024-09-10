@@ -17,6 +17,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
 import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -77,13 +78,19 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSTable
-      :isLoading="tableController.isLoading"
-      :result="userTypeData"
-      :header="headerController"
-      @editData="(id: Number) => router.push(`/user/type/${id}`)"
-      @deleteData="deleteData"
-    />
-    <SGSTableHelper />
+    <FormLayout
+      title="user-type"
+      :push="{ label: 'create-user-type', to: '/user/type/create' }"
+    >
+      <template #body>
+        <SGSTable
+          :isLoading="tableController.isLoading"
+          :result="userTypeData"
+          :header="headerController"
+          @editData="(id: Number) => router.push(`/user/type/${id}`)"
+          @deleteData="deleteData"
+        />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

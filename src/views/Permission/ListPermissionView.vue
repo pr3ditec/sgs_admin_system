@@ -17,6 +17,7 @@ import Translate from '@/translate'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -77,13 +78,20 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSTable
-      :result="permissionData"
-      :isLoading="tableController.isLoading"
-      :header="headerController"
-      @editData="(id: Number) => router.push(`/permissao/${id}`)"
-      @deleteData="deleteData"
-    />
-    <SGSTableHelper />
+    <FormLayout
+      title="permission"
+      :push="{ label: 'create-permission', to: '/permission/create' }"
+      :back="{ label: 'add-permission', to: '/permission/add' }"
+    >
+      <template #body>
+        <SGSTable
+          :result="permissionData"
+          :isLoading="tableController.isLoading"
+          :header="headerController"
+          @editData="(id: Number) => router.push(`/permissao/${id}`)"
+          @deleteData="deleteData"
+        />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

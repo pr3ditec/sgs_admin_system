@@ -12,6 +12,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
 import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
+import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -77,13 +78,16 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <SGSTable
-      :isLoading="tableController.isLoading"
-      :result="serviceData"
-      :header="headerController"
-      @editData="(id: Number) => router.push(`/city/${id}`)"
-      @deleteData="deleteData"
-    />
-    <SGSTableHelper />
+    <FormLayout title="services" :push="{ label: 'create-service', to: '/service/create' }">
+      <template #body>
+        <SGSTable
+          :isLoading="tableController.isLoading"
+          :result="serviceData"
+          :header="headerController"
+          @editData="(id: Number) => router.push(`/city/${id}`)"
+          @deleteData="deleteData"
+        />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

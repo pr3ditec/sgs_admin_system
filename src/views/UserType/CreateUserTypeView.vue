@@ -69,7 +69,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-user-type">
+    <FormLayout
+      title="create-user-type"
+      :push="{ label: 'list-type-user', to: '/user/type/list' }"
+    >
       <template #body>
         <SGSInput
           label="name"

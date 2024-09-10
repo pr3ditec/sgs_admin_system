@@ -121,7 +121,7 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-city">
+    <FormLayout title="create-city" :push="{ label: 'list-city', to: '/city/list' }">
       <template #body>
         <SGSSelect
           label="uf"

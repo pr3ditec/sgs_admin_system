@@ -11,6 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import type { CalendarOptions } from '@fullcalendar/core/index.js'
 import { useRouter } from 'vue-router'
 import { openCalendarEditModal } from '@/Helpers/Calendar'
+import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
 const request = useGlobalStore().request
@@ -68,6 +69,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FullCalendarComponent v-if="true" ref="calendar" :options="calendarOptions" />
+    <FormLayout title="service-order">
+      <template #body>
+        <FullCalendarComponent v-if="true" ref="calendar" :options="calendarOptions" />
+      </template>
+    </FormLayout>
   </DefaultLayout>
 </template>

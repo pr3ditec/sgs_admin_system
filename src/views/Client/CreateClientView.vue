@@ -195,7 +195,7 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-client">
+    <FormLayout title="create-client" :push="{ label: 'list-client', to: '/client/list' }">
       <template #body>
         <SGSInput
           label="name"
