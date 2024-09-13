@@ -51,7 +51,6 @@ export interface Parametros {
 }
 
 export interface OrdemServico {
-  numero: String
   concluido: boolean
   recebido: boolean
   equipamentos_servicos: Array<EquipamentosServicos>

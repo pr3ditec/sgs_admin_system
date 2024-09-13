@@ -76,7 +76,6 @@ const clienteData: Ref<Array<Cliente>> = ref([])
 const equipamentosServicosData: Ref<Array<EquipamentosServicos>> = ref([])
 const servicosData: Ref<Array<Servicos>> = ref([])
 const apiFormData: Ref<OrdemServico> = ref(<OrdemServico>{
-  numero: '',
   concluido: false,
   recebido: false,
   equipamentos_servicos: [],
@@ -96,7 +95,6 @@ const popEquipmentFromServiceOrder = () => {
 }
 
 const validateData = (): boolean => {
-  const isValidNumero = validateInputParameter(numeroController.value, apiFormData.value.numero)
   const isValidClienteId = validateSelectParameter(
     clienteController.value,
     apiFormData.value.cliente_id
@@ -106,7 +104,7 @@ const validateData = (): boolean => {
     apiFormData.value.usuario_id
   )
 
-  return isValidNumero && isValidClienteId && isValidUsuarioId
+  return isValidClienteId && isValidUsuarioId
 }
 
 const getClienteData = async () => {
@@ -205,14 +203,14 @@ onMounted(() => {
       :push="{ label: 'list-service-order', to: '/service-order/list' }"
     >
       <template #body>
-        <SGSInput
+        <!-- <SGSInput
           label="number"
           required
           :reference="apiFormData"
           referenceName="numero"
           :controller="numeroController"
         />
-        <SGSDivider />
+        <SGSDivider /> -->
         <!-- <div class="flex flex-row items-center justify-center">
           <SGSCheckbox label="finished" :reference="apiFormData" referenceName="concluido" />
           <SGSCheckbox label="payed" :reference="apiFormData" referenceName="recebido" />
@@ -248,7 +246,7 @@ onMounted(() => {
             <!-- select many -->
             <SGSSelectMany
               :items="servicosData"
-              label="yes"
+              label="services"
               :track="{ field: 'id', name: 'descricao' }"
               :reference="equipamentosServicosData[count - 1]"
               referenceName="servicos"
