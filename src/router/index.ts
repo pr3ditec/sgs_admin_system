@@ -119,6 +119,14 @@ const routes = [
       title: 'list-service-order'
     }
   },
+  {
+    path: '/service-order/:id',
+    name: 'Editar ordem de serviços',
+    component: () => import('@/views/ServiceOrder/ProfileServiceOrderView.vue'),
+    meta: {
+      title: "profile-service-order"
+    }
+  },
   /** ORDEM DE SERVICO */
 
   /** SERVICO */

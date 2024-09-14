@@ -124,5 +124,6 @@
   "admin-welcome": "Hellow Administrator, what do you want to do?",
   "mark-as-updated": "Mark as updated",
   "update-service-order": "Update service order date",
-  "serial-number": "Serial Number"
+  "serial-number": "Serial Number",
+  "profile-service-order": "Service Order Profile"
 }

@@ -125,5 +125,6 @@
   "admin-welcome": "Olá administrador, seja bem vindo novamente",
   "mark-as-updated": "Re-atendido",
   "update-service-order": "Atualizar data de ordem de serviço",
-  "serial-number": "Número de série"
+  "serial-number": "Número de série",
+  "profile-service-order": "Perfil de ordem de serviço"
 }

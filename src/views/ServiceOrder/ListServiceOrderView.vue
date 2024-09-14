@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SGSTable from '@/components/Tables/SGSTable.vue'
+import SGSTableServiceOrder from '@/components/Tables/SGSTableServiceOrder.vue'
 import { Response } from '@/Helpers/Response'
 import type {
   ApiResponse,
@@ -96,7 +96,7 @@ onMounted(() => {
       :push="{ label: 'create-service-order', to: '/service-order/create' }"
     >
       <template #body>
-        <SGSTable
+        <SGSTableServiceOrder
           :isLoading="tableController.isLoading"
           :header="headerController"
           :result="serviceOrderData"

@@ -76,6 +76,12 @@ export interface Login {
 /** API I/O */
 
 /** CONTROLADORES DE COMPONENTES */
+
+export interface ProfileDataController {
+  isLoading: boolean
+  notFound: boolean
+}
+
 export interface InputController {
   isEmpty: boolean
   isDisabled: boolean

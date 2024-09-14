@@ -58,7 +58,7 @@ const handleDateClick = () => {
 }
 
 const handleEventClick = () => {
-  openCalendarEditModal('nome')
+  // openCalendarEditModal('nome')
 }
 
 onMounted(() => {
