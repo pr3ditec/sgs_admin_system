@@ -8,7 +8,7 @@ const props = defineProps({
 })
 </script>
 <template>
-  <div class="flex flex-col w-full items-center">
+  <div class="flex flex-col w-full">
     <label class="mb-0.5 block text-black dark:text-zinc-200">
       {{ Translate.to(props.label) }}
     </label>

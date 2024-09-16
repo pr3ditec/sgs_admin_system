@@ -11,7 +11,6 @@ import type {
   ButtonController,
   Cliente,
   EquipamentosServicos,
-  InputController,
   OrdemServico,
   SelectController,
   Servicos
@@ -23,24 +22,15 @@ import { bindKey } from '@/Helpers/Binder'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import FormLayout from '@/layouts/FormLayout.vue'
 import SGSButton from '@/components/Buttons/SGSButton.vue'
-import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
-import { getSessionUser } from '@/Helpers/SessionUser'
-import SGSCheckbox from '@/components/Forms/SGSCheckbox.vue'
 import SGSAddEquipmentService from '@/components/Forms/SGSAddEquipmentService.vue'
 import SGSSelectMany from '@/components/Forms/SGSSelectMany.vue'
-import { useRoute, useRouter } from 'vue-router'
 
 const request = useGlobalStore().request
 
 const buttonController: Ref<ButtonController> = ref({
   isLoading: false,
-  isDisabled: false
-})
-
-const numeroController: Ref<InputController> = ref({
-  isEmpty: false,
   isDisabled: false
 })
 
@@ -203,18 +193,6 @@ onMounted(() => {
       :push="{ label: 'list-service-order', to: '/service-order/list' }"
     >
       <template #body>
-        <!-- <SGSInput
-          label="number"
-          required
-          :reference="apiFormData"
-          referenceName="numero"
-          :controller="numeroController"
-        />
-        <SGSDivider /> -->
-        <!-- <div class="flex flex-row items-center justify-center">
-          <SGSCheckbox label="finished" :reference="apiFormData" referenceName="concluido" />
-          <SGSCheckbox label="payed" :reference="apiFormData" referenceName="recebido" />
-        </div> -->
         <SGSSelect
           label="client"
           :items="clienteData"

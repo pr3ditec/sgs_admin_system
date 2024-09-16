@@ -14,6 +14,7 @@ const props = defineProps({
   label: String,
   mask: String,
   required: Boolean,
+  disabled: Boolean,
   reference: Object,
   referenceName: String,
   controller: Object as PropType<InputController>
@@ -33,6 +34,7 @@ const props = defineProps({
       :placeholder="Translate.to('type-here')"
       v-model="props.reference![props.referenceName!]"
       type="text"
+      :disabled="props.disabled"
       class="w-full rounded border-[1.5px] text-black border-stroke py-3 px-5 font-normal outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
     />
     <input
@@ -40,6 +42,7 @@ const props = defineProps({
       :placeholder="Translate.to('type-here')"
       v-model="props.reference![props.referenceName!]"
       type="text"
+      :disabled="props.disabled"
       class="w-full rounded border-[1.5px] text-black border-stroke py-3 px-5 font-normal outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
     />
     <label v-if="controller?.isEmpty" class="text-red lowercase text-sm">{{

@@ -125,5 +125,7 @@
   "mark-as-updated": "Mark as updated",
   "update-service-order": "Update service order date",
   "serial-number": "Serial Number",
-  "profile-service-order": "Service Order Profile"
+  "profile-service-order": "Service Order Profile",
+  "update": "Update",
+  "update-os-error": "Error on update service-order"
 }
