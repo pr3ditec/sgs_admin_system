@@ -3,7 +3,7 @@
  * @description View para cadastro de usuários
  * @active
  */
-import { onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref, watch, type Ref } from 'vue'
 import { useGlobalStore } from '@/stores/global'
 import type {
   ApiResponse,
@@ -183,6 +183,27 @@ const sendData = async () => {
       clearClientData(apiFormData.value)
     })
 }
+
+const searchByCep = async () => {
+  if (apiFormData.value.cep.length < 9) {
+    return
+  }
+  const trimmed_cep = apiFormData.value.cep.replace(/\D/g, '')
+  await request
+    .get(`https://viacep.com.br/ws/${trimmed_cep}/json/`)
+    .then((res: any) => {
+      console.log(res)
+      apiFormData.value.logradouro = res.logradouro
+    })
+    .catch((err) => {
+      console.log('Erro ao buscar dados de cep')
+    })
+}
+
+watch(
+  () => apiFormData.value.cep,
+  () => searchByCep()
+)
 
 onMounted(() => {
   Promise.all([getCidadeData()]).catch((err) => {
