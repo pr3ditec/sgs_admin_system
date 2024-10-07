@@ -12,6 +12,7 @@ import Translate from './translate'
 
 //@ts-expect-error
 import VueTheMask from 'vue-the-mask'
+//@ts-expect-error
 import VueMoney from 'v-money'
 
 const app = createApp(App)

@@ -93,29 +93,14 @@ onMounted(() => {
 </script>
 <template>
   <main class="flex flex-row">
-    <div
-      class="flex flex-col bg-slate-800 dark:bg-slate-900 w-1/2 h-screen items-center justify-center"
-    >
+    <div class="flex flex-col bg-slate-800 dark:bg-slate-900 w-1/2 h-screen items-center justify-center">
       <SidebarHeaderLogo w="350" h="300" />
     </div>
-    <div
-      class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center dark:bg-slate-800"
-    >
+    <div class="flex flex-col gap-4 bg-slate-100 p-4 w-1/2 h-screen justify-center dark:bg-slate-800">
       <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-400 mb-5">Entrar no SGS</h3>
-      <SGSInput
-        label="email"
-        required
-        :reference="apiFormData"
-        referenceName="email"
-        :controller="emailController"
-      />
-      <SGSPassword
-        label="password"
-        required
-        :reference="apiFormData"
-        referenceName="senha"
-        :controller="senhaController"
-      />
+      <SGSInput label="email" required :reference="apiFormData" referenceName="email" :controller="emailController" />
+      <SGSPassword label="password" required :reference="apiFormData" referenceName="senha"
+        :controller="senhaController" />
       <SGSButton @click="sendData" label="sign-in" :controller="buttonController" />
       <div class="flex flex-col mx-auto mt-3 gap-2">
         <p class="underline cursor-pointer">Esqueceu a senha?</p>

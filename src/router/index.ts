@@ -216,7 +216,7 @@ const router = createRouter({
 
 const checkTokenLogin = async (): Promise<boolean> => {
   const userToken = LocalStorageController.getToken()
-  const isValidToken = await (await axios.get('http://0.0.0.0:8000/auth-check')).data.status
+  const isValidToken = await (await axios.get('http://127.0.0.1:8000/auth-check')).data.status
 
   if (userToken && isValidToken) {
     return true
@@ -235,10 +235,10 @@ router.beforeEach(async (to, from, next) => {
 
   switch (to.path) {
     case '/':
-      ;(await checkTokenLogin()) ? next('/dashboard') : next()
+      ; (await checkTokenLogin()) ? next('/dashboard') : next()
       break
     default:
-      ;(await checkTokenLogin()) ? next() : next('/')
+      ; (await checkTokenLogin()) ? next() : next('/')
       break
   }
 })
