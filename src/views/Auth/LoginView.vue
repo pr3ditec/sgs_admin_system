@@ -65,6 +65,7 @@ const sendData = async () => {
   await request
     .store('/login', apiFormData.value)
     .then((res: ApiResponse) => {
+      console.log(res)
       if (res.status) {
         //@ts-expect-error
         request.setToken(res.list.login.token)

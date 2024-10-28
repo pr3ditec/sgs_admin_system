@@ -49,11 +49,11 @@ const menuGroups = [
         label: 'equipment',
         route: '/equipment/list'
       },
-      {
+      /*{
         icon: '',
         label: 'city',
         route: '/city/list'
-      }
+      }*/
     ]
   }
 ]
