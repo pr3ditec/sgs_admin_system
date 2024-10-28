@@ -28,7 +28,7 @@ export interface Cliente {
   cep: String
   numero: String
   complemento: String
-  cidade_id: Number
+  cidade: String
   telefone: String
   cpf: Partial<String>
   cnpj: Partial<String>

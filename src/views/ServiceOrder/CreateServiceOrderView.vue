@@ -215,7 +215,6 @@ onMounted(() => {
       :push="{ label: 'list-service-order', to: '/service-order/list' }"
     >
       <template #body>
-        {{ apiFormData }}
         <SGSSelect
           label="client"
           :items="clienteData"

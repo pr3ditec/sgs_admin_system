@@ -59,10 +59,9 @@ const numeroController: Ref<InputController> = ref({
   isDisabled: false
 })
 
-const cidadeController: Ref<SelectController> = ref({
+const cidadeController: Ref<InputController> = ref({
   isEmpty: false,
-  notFound: false,
-  isDisabled: true
+  isDisabled: false
 })
 
 const cpfController: Ref<InputController> = ref({
@@ -99,7 +98,7 @@ const apiFormData: Ref<Cliente> = ref(<Cliente>{
   complemento: '',
   numero: '',
   telefone: '',
-  cidade_id: 0,
+  cidade: '',
   usuario_id: 0
 })
 var apiFormDataSanitazied: Cliente = <Cliente>{}
@@ -129,7 +128,7 @@ const validateData = (): boolean => {
   )
   const isValidCep = validateInputParameter(cepController.value, apiFormData.value.cep)
   const isValidNumero = validateInputParameter(numeroController.value, apiFormData.value.numero)
-  const isValidCidade = validateSelectParameter(cidadeController.value, apiFormData.value.cidade_id)
+  const isValidCidade = validateInputParameter(cidadeController.value, apiFormData.value.cidade)
   const isValidDocuments = !apiFormData.value.cpf && !apiFormData.value.cnpj ? false : true
 
   return (
@@ -140,17 +139,6 @@ const validateData = (): boolean => {
     isValidCidade &&
     isValidDocuments
   )
-}
-
-const getCidadeData = async () => {
-  await request.get('/cidade').then((res: ApiResponse) => {
-    if (res.status) {
-      cidadeData.value = res.list as Array<Cidade>
-      cidadeController.value.isDisabled = false
-    } else {
-      cidadeController.value.notFound = true
-    }
-  })
 }
 
 const destroyItem = (items: Array<string>) => {
@@ -194,6 +182,7 @@ const searchByCep = async () => {
     .then((res: any) => {
       console.log(res)
       apiFormData.value.logradouro = res.logradouro
+      apiFormData.value.cidade = res.localidade
     })
     .catch((err) => {
       console.log('Erro ao buscar dados de cep')
@@ -206,9 +195,6 @@ watch(
 )
 
 onMounted(() => {
-  Promise.all([getCidadeData()]).catch((err) => {
-    console.log('Erro ao buscar dados de api')
-  })
   bindKey('Enter', sendData)
   // apiFormData.value.usuario_id = getSessionUser() as number
   apiFormData.value.usuario_id = 1
@@ -235,18 +221,16 @@ onMounted(() => {
           :controller="telefoneController"
         />
         <SGSDivider />
-
+        <SGSInput
+          :mask="'#####-###'"
+          label="cep"
+          required
+          :reference="apiFormData"
+          referenceName="cep"
+          :controller="cepController"
+        />
         <SGSAddress>
-          <template #cep>
-            <SGSInput
-              :mask="'#####-###'"
-              label="cep"
-              required
-              :reference="apiFormData"
-              referenceName="cep"
-              :controller="cepController"
-            />
-          </template>
+          <template #cep> </template>
           <template #logradouro>
             <SGSInput
               label="logradouro"
@@ -275,13 +259,11 @@ onMounted(() => {
             />
           </template>
           <template #cidade>
-            <SGSSelect
+            <SGSInput
               label="city"
-              :items="cidadeData"
-              :track="{ field: 'id', name: 'nome' }"
               :controller="cidadeController"
               :reference="apiFormData"
-              referenceName="cidade_id"
+              referenceName="cidade"
               required
             />
           </template>
