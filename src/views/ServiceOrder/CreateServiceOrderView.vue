@@ -11,6 +11,7 @@ import type {
   ButtonController,
   Cliente,
   EquipamentosServicos,
+  InputController,
   OrdemServico,
   SelectController,
   Servicos
@@ -26,6 +27,9 @@ import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import SGSAddEquipmentService from '@/components/Forms/SGSAddEquipmentService.vue'
 import SGSSelectMany from '@/components/Forms/SGSSelectMany.vue'
+import SGSMoneyInput from '@/components/Forms/SGSMoneyInput.vue'
+import SGSInput from '@/components/Forms/SGSInput.vue'
+import SGSDatePicker from '@/components/Forms/SGSDatePicker.vue'
 
 const request = useGlobalStore().request
 
@@ -38,6 +42,16 @@ const clienteController: Ref<SelectController> = ref({
   isDisabled: true,
   isEmpty: false,
   notFound: false
+})
+
+const valorOsController: Ref<InputController> = ref({
+  isEmpty: false,
+  isDisabled: false
+})
+
+const dataOsController: Ref<InputController> = ref({
+  isEmpty: false,
+  isDisabled: false
 })
 
 const usuarioController: Ref<SelectController> = ref({
@@ -68,6 +82,8 @@ const servicosData: Ref<Array<Servicos>> = ref([])
 const apiFormData: Ref<OrdemServico> = ref(<OrdemServico>{
   concluido: false,
   recebido: false,
+  valor: 0,
+  data_os: '',
   equipamentos_servicos: [],
   cliente_id: 0,
   usuario_id: 0
@@ -131,8 +147,14 @@ const getServiceData = async () => {
   })
 }
 
+const sanitazeMoney = () => {
+  //@ts-expect-error
+  apiFormData.value.valor = apiFormData.value.valor.substring(3)
+}
+
 const sendData = async () => {
   buttonHandler(buttonController.value, true)
+  sanitazeMoney()
 
   if (!validateData()) {
     return buttonHandler(buttonController.value, false)
@@ -193,6 +215,7 @@ onMounted(() => {
       :push="{ label: 'list-service-order', to: '/service-order/list' }"
     >
       <template #body>
+        {{ apiFormData }}
         <SGSSelect
           label="client"
           :items="clienteData"
@@ -201,6 +224,21 @@ onMounted(() => {
           :reference="apiFormData"
           referenceName="cliente_id"
           required
+        />
+        <SGSMoneyInput
+          label="price"
+          required
+          :reference="apiFormData"
+          referenceName="valor"
+          :controller="valorOsController"
+        />
+        <SGSDivider />
+        <SGSDatePicker
+          label="date-os"
+          required
+          :reference="apiFormData"
+          referenceName="data_os"
+          :controller="dataOsController"
         />
         <SGSDivider />
         <SGSAddEquipmentService

@@ -53,6 +53,8 @@ export interface Parametros {
 export interface OrdemServico {
   concluido: boolean
   recebido: boolean
+  valor: number
+  data_os: string
   equipamentos_servicos: Array<EquipamentosServicos>
   cliente_id: Number
   usuario_id: Number

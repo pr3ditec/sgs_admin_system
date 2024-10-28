@@ -128,5 +128,6 @@
   "serial-number": "Número de série",
   "profile-service-order": "Perfil de ordem de serviço",
   "update": "Atualizar",
-  "update-os-error": "Erro ao atualziar ordem de serviço"
+  "update-os-error": "Erro ao atualziar ordem de serviço",
+  "date-os": "Data ordem de servico"
 }
