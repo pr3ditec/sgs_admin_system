@@ -29,6 +29,8 @@ import Translate from '@/translate'
 
 const request = useGlobalStore().request
 
+const personTypeController = ref(0)
+
 const buttonController: Ref<ButtonController> = ref({
   isLoading: false,
   isDisabled: false
@@ -195,6 +197,20 @@ watch(
   () => searchByCep()
 )
 
+watch(personTypeController, () => {
+  if (personTypeController.value == 1) {
+    //@ts-expect-error
+    delete apiFormData.value['cpf']
+  } else {
+    //@ts-expect-error
+    delete apiFormData.value['cnpj']
+    //@ts-expect-error
+    delete apiFormData.value['inscricao_estadual']
+    //@ts-expect-error
+    delete apiFormData.value['inscricao_municipal']
+  }
+})
+
 onMounted(() => {
   bindKey('Enter', sendData)
   // apiFormData.value.usuario_id = getSessionUser() as number
@@ -203,7 +219,21 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-client" :push="{ label: 'list-client', to: '/client/list' }">
+    <div class="flex flex-col items-center">
+      <p>Selecione o tipo de pessoa?</p>
+      <div class="flex flex-row gap-2 mx-auto">
+        <label>{{ Translate.to('normal-person') }}</label>
+        <input type="radio" name="register" v-model="personTypeController" value="0" />
+        <label>{{ Translate.to('juridic-person') }}</label>
+        <input type="radio" name="register" v-model="personTypeController" value="1" />
+      </div>
+    </div>
+    {{ apiFormData }}
+    <FormLayout
+      v-if="personTypeController == 0"
+      title="create-client"
+      :push="{ label: 'list-client', to: '/client/list' }"
+    >
       <template #body>
         <SGSInput
           label="name"
@@ -272,49 +302,119 @@ onMounted(() => {
         <SGSDivider />
 
         <!-- CASO SEJA UMA PESSOA FISICA AQUI VAI O CPF -->
-        <SGSOptional v-if="!apiFormData.cnpj" label="normal-person" @destroy="destroyItem(['cpf'])">
-          <SGSInput
-            label="cpf"
-            :mask="'###.###.###-##'"
-            :reference="apiFormData"
-            referenceName="cpf"
-            :controller="cpfController"
-          />
-        </SGSOptional>
+        <SGSInput
+          label="cpf"
+          :mask="'###.###.###-##'"
+          :reference="apiFormData"
+          referenceName="cpf"
+          :controller="cpfController"
+        />
 
         <!-- CASO SEJA UMA PESSOA JURIDICA AQUI VAI O CNPJ E OUTROS DADOS -->
-        <SGSOptional
-          v-if="!apiFormData.cpf"
-          label="juridic-person"
-          @destroy="destroyItem(['cnpj', 'inscricao_municipal', 'inscricao_estadual'])"
-        >
-          <SGSInput
-            label="cnpj"
-            :mask="'##.###.###/####-##'"
-            :reference="apiFormData"
-            referenceName="cnpj"
-            :controller="cnpjController"
-          />
-          <SGSDivider />
-          <SGSInput
-            label="state-register"
-            :mask="'###############'"
-            :reference="apiFormData"
-            referenceName="inscricao_estadual"
-            :controller="inscricaoEstadualController"
-          />
-          <SGSDivider />
-          <SGSInput
-            label="local-register"
-            :mask="'###############'"
-            :reference="apiFormData"
-            referenceName="inscricao_municipal"
-            :controller="inscricaoMunicipalController"
-          />
-        </SGSOptional>
-        <p class="lowercase text-red" v-show="!apiFormData.cpf && !apiFormData.cnpj">
-          {{ Translate.to('person-type') }}
-        </p>
+      </template>
+      <template #handler>
+        <SGSButton @click="sendData" label="create-client" :controller="buttonController" />
+      </template>
+    </FormLayout>
+
+    <!-- PESSOA JURIDICA -->
+
+    <FormLayout
+      v-if="personTypeController == 1"
+      title="create-client"
+      :push="{ label: 'list-client', to: '/client/list' }"
+    >
+      <template #body>
+        <SGSInput
+          label="name"
+          required
+          :reference="apiFormData"
+          referenceName="nome"
+          :controller="nomeController"
+        />
+        <SGSDivider />
+        <SGSInput
+          label="phone"
+          :mask="'(##)#####-####'"
+          required
+          :reference="apiFormData"
+          referenceName="telefone"
+          :controller="telefoneController"
+        />
+        <SGSDivider />
+        <SGSInput
+          :mask="'#####-###'"
+          label="cep"
+          required
+          :reference="apiFormData"
+          referenceName="cep"
+          :controller="cepController"
+        />
+        <SGSAddress>
+          <template #cep> </template>
+          <template #logradouro>
+            <SGSInput
+              label="logradouro"
+              required
+              :reference="apiFormData"
+              referenceName="logradouro"
+              :controller="logradouroController"
+            />
+          </template>
+          <template #numero>
+            <SGSInput
+              label="number"
+              :mask="'#####'"
+              required
+              :reference="apiFormData"
+              referenceName="numero"
+              :controller="numeroController"
+            />
+          </template>
+          <template #complemento>
+            <SGSInput
+              label="complement"
+              :reference="apiFormData"
+              referenceName="complemento"
+              :controller="complementoController"
+            />
+          </template>
+          <template #cidade>
+            <SGSInput
+              label="city"
+              :controller="cidadeController"
+              :reference="apiFormData"
+              referenceName="cidade"
+              required
+            />
+          </template>
+        </SGSAddress>
+        <SGSDivider />
+
+        <!-- CASO SEJA UMA PESSOA JURIDICA AQUI VAI O CNPJ E OUTROS DADOS -->
+        <SGSInput
+          label="cnpj"
+          :mask="'##.###.###/####-##'"
+          :reference="apiFormData"
+          referenceName="cnpj"
+          :controller="cnpjController"
+        />
+        <SGSDivider />
+        <SGSInput
+          label="state-register"
+          :mask="'###############'"
+          :reference="apiFormData"
+          referenceName="inscricao_estadual"
+          :controller="inscricaoEstadualController"
+        />
+        <SGSDivider />
+        <SGSInput
+          label="local-register"
+          :mask="'###############'"
+          :reference="apiFormData"
+          referenceName="inscricao_municipal"
+          :controller="inscricaoMunicipalController"
+        />
       </template>
       <template #handler>
         <SGSButton @click="sendData" label="create-client" :controller="buttonController" />
