@@ -24,7 +24,6 @@ import SGSInput from '@/components/Forms/SGSInput.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSSelect from '@/components/Forms/SGSSelect.vue'
 import SGSAddress from '@/components/Forms/SGSAddress.vue'
-import SGSOptional from '@/components/Forms/SGSOptional.vue'
 import Translate from '@/translate'
 
 const request = useGlobalStore().request
@@ -228,7 +227,7 @@ onMounted(() => {
         <input type="radio" name="register" v-model="personTypeController" value="1" />
       </div>
     </div>
-    {{ apiFormData }}
+
     <FormLayout
       v-if="personTypeController == 0"
       title="create-client"
@@ -274,7 +273,7 @@ onMounted(() => {
           <template #numero>
             <SGSInput
               label="number"
-              :mask="'#####'"
+              :mask="'XXXXX'"
               required
               :reference="apiFormData"
               referenceName="numero"
