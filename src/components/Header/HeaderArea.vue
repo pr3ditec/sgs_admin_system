@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import DarkModeSwitcher from './DarkModeSwitcher.vue'
 import DropdownMessage from './DropdownMessage.vue'
 import DropdownNotification from './DropdownNotification.vue'
@@ -6,6 +7,10 @@ import DropdownUser from './DropdownUser.vue'
 import HeaderHamburgerButton from './HeaderHamburgerButton.vue'
 // import HeaderLogoSmartphone from './HeaderLogoSmartphone.vue'
 import LangModeSwitcher from './LangModeSwitcher.vue'
+import Translate from '@/translate'
+import { useGlobalStore } from '@/stores/global'
+
+const pageTitle = useGlobalStore().getTitle
 </script>
 
 <template>
@@ -22,7 +27,9 @@ import LangModeSwitcher from './LangModeSwitcher.vue'
         <HeaderLogoSmartphone />
         <!-- LOGO COM TELA REDUZIDA -->
       </div>
-
+      <div class="flex flex-row w-full">
+        <p class="uppercase text-lg text-slate-900 font-bolder">{{ Translate.to(pageTitle) }}</p>
+      </div>
       <div class="flex flex-row w-full justify-end gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">
           <li>

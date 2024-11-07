@@ -6,7 +6,8 @@ var start_service_request = new Request()
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     usuario_id: 0 as Number,
-    closeModalEquipment: false
+    closeModalEquipment: false,
+    title: '' as string
   }),
   actions: {
     setToken(token: String) {},
@@ -15,11 +16,15 @@ export const useGlobalStore = defineStore('global', {
     },
     setCloseModalEquipment(close: boolean): void {
       this.closeModalEquipment = close
+    },
+    setTitle(title: string): void {
+      this.title = title
     }
   },
   getters: {
     request: (state) => start_service_request,
     userId: (state) => state.usuario_id,
-    shouldCloseModalEquipment: (state) => state.closeModalEquipment
+    shouldCloseModalEquipment: (state) => state.closeModalEquipment,
+    getTitle: (state) => state.title
   }
 })

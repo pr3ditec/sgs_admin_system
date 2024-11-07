@@ -124,7 +124,7 @@ const routes = [
     name: 'Editar ordem de serviços',
     component: () => import('@/views/ServiceOrder/ProfileServiceOrderView.vue'),
     meta: {
-      title: "profile-service-order"
+      title: 'profile-service-order'
     }
   },
   /** ORDEM DE SERVICO */
@@ -231,14 +231,15 @@ router.beforeEach(async (to, from, next) => {
     //@ts-expect-error
     request.setToken(LocalStorageController.getToken())
   }
+  useGlobalStore().setTitle(to.meta.title as string)
   document.title = `${Translate.to(to.meta.title)} | SGS`
 
   switch (to.path) {
     case '/':
-      ; (await checkTokenLogin()) ? next('/dashboard') : next()
+      ;(await checkTokenLogin()) ? next('/dashboard') : next()
       break
     default:
-      ; (await checkTokenLogin()) ? next() : next('/')
+      ;(await checkTokenLogin()) ? next() : next('/')
       break
   }
 })

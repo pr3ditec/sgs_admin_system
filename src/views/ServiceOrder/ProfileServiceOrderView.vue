@@ -31,6 +31,11 @@ const nomeController: Ref<InputController> = ref(<InputController>{
   isEmpty: false
 })
 
+const valorController: Ref<InputController> = ref(<InputController>{
+  isDisabled: true,
+  isEmpty: false
+})
+
 const serviceOrderController: Ref<ProfileDataController> = ref({
   notFound: false,
   isLoading: true
@@ -125,6 +130,14 @@ onMounted(() => {
             :reference="serviceOrderData"
             referenceName="nome"
             :controller="nomeController"
+            disabled
+          />
+          <SGSDivider />
+          <SGSInput
+            label="price"
+            :reference="serviceOrderData"
+            referenceName="valor"
+            :controller="valorController"
             disabled
           />
           <SGSDivider />
