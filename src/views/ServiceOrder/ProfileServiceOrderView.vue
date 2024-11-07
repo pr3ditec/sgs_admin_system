@@ -141,7 +141,7 @@ onMounted(() => {
             disabled
           />
           <SGSDivider />
-          <div class="flex flex-col">
+          <div class="flex flex-row gap-5">
             <SGSCheckbox label="finished" :reference="serviceOrderData" referenceName="concluido" />
             <SGSCheckbox label="payed" :reference="serviceOrderData" referenceName="recebido" />
           </div>
