@@ -43,7 +43,7 @@ const headerController: Ref<Array<HeaderTableController>> = ref([
     headerClass: 'flex flex-row gap-1 font-bold uppercase'
   },
   {
-    field: 'cidade_nome',
+    field: 'cidade',
     title: Translate.to('city'),
     headerClass: 'flex flex-row gap-1 font-bold uppercase'
   },
