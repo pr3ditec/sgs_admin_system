@@ -165,6 +165,14 @@ const routes = [
       title: 'list-client'
     }
   },
+  {
+    path: '/client/:id',
+    name: 'Perfil de cliente',
+    component: () => import('@/views/Client/ProfileClientView.vue'),
+    meta: {
+      title: 'client'
+    }
+  },
   /** CLIENTE */
 
   /** APARELHO */
