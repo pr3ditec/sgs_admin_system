@@ -146,6 +146,14 @@ const routes = [
       title: 'list-service'
     }
   },
+  {
+    path: '/service/:id',
+    name: 'Editar Serviços',
+    component: () => import('@/views/Service/ProfileServiceView.vue'),
+    meta: {
+      title: 'service'
+    }
+  },
   /** SERVICO */
 
   /** CLIENTE */

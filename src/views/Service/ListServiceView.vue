@@ -84,7 +84,7 @@ onMounted(() => {
           :isLoading="tableController.isLoading"
           :result="serviceData"
           :header="headerController"
-          @editData="(id: Number) => router.push(`/city/${id}`)"
+          @editData="(id: Number) => router.push(`/service/${id}`)"
           @deleteData="deleteData"
         />
       </template>

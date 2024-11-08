@@ -119,6 +119,7 @@
   "sign-in": "Entrar",
   "logout-failed": "Falha ao sair de sistema",
   "services": "Serviços",
+  "service": "Serviço",
   "create-service": "Criar serviço",
   "list-service": "Listar serviços",
   "phone": "Telefone",
