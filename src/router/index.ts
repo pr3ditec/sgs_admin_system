@@ -200,6 +200,14 @@ const routes = [
       title: 'list-equipment'
     }
   },
+  {
+    path: '/equipment/:id',
+    name: 'Perfil de equipamento',
+    component: () => import('@/views/Equipment/ProfileEquipmentView.vue'),
+    meta: {
+      title: 'equipment'
+    }
+  },
   /** APARELHO */
 
   /** CIDADE */
