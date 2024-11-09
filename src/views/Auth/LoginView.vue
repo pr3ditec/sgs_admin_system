@@ -104,8 +104,8 @@ onMounted(() => {
         :controller="senhaController" />
       <SGSButton @click="sendData" label="sign-in" :controller="buttonController" />
       <div class="flex flex-col mx-auto mt-3 gap-2">
-        <p class="underline cursor-pointer">Esqueceu a senha?</p>
-        <p class="underline cursor-pointer">Solicite uma conta</p>
+       <!--<p class="underline cursor-pointer">Esqueceu a senha?</p>--> 
+        <!--<p 0class="underline cursor-pointer">Solicite uma conta</p>-->
       </div>
     </div>
   </main>
