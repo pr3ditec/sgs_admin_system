@@ -10,6 +10,8 @@ import RouterButton from '@/components/Buttons/RouterButton.vue'
 import Translate from '@/translate'
 import type { PropType } from 'vue'
 
+const emits = defineEmits(['helper'])
+
 interface Route {
   label: string
   to: string
@@ -27,10 +29,9 @@ const props = defineProps({
       <div class="flex flex-row ml-auto gap-1">
         <RouterButton v-if="push" :label="push?.label" :to="push?.to" />
         <RouterButton v-if="back" :label="back?.label" :to="back?.to" />
-      </div>
-
-      <div class="ml-auto w-full">
-        <slot name="helper"> </slot>
+        <button @click="emits('helper')" class="p-2 text-2xl rounded-md border border-slate-500">
+          ?
+        </button>
       </div>
       <div class="mx-auto w-full">
         <slot name="body"></slot>

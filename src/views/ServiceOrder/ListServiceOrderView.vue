@@ -92,6 +92,7 @@ onMounted(() => {
 <template>
   <DefaultLayout>
     <FormLayout
+      @helper="Response.helperList()"
       title="service-order"
       :push="{ label: 'create-service-order', to: '/service-order/create' }"
     >

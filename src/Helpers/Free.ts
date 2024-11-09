@@ -23,7 +23,6 @@ const clearUserTypeData = (formData: TipoUsuario) => {
 }
 
 const clearServiceOrder = (formData: OrdemServico) => {
-  formData.numero = ''
   formData.concluido = false
   formData.recebido = false
   formData.equipamentos_servicos = []
@@ -52,7 +51,7 @@ const clearClientData = (formData: Cliente) => {
   formData.cep = ''
   formData.logradouro = ''
   formData.numero = ''
-  formData.cidade_id = 0
+  formData.cidade = ''
   formData.complemento = ''
   formData.cpf = ''
   formData.cnpj = ''

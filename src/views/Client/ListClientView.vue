@@ -88,7 +88,11 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="client" :push="{ label: 'create-client', to: '/client/create' }">
+    <FormLayout
+      @helper="Response.helperList()"
+      title="client"
+      :push="{ label: 'create-client', to: '/client/create' }"
+    >
       <template #body>
         <SGSTable
           :isLoading="tableController.isLoading"
