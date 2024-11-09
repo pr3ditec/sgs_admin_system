@@ -3,6 +3,7 @@ import SGSButton from '@/components/Buttons/SGSButton.vue'
 import SGSCheckbox from '@/components/Forms/SGSCheckbox.vue'
 import SGSDivider from '@/components/Forms/SGSDivider.vue'
 import SGSInput from '@/components/Forms/SGSInput.vue'
+import SGSMoneyInput from '@/components/Forms/SGSMoneyInput.vue'
 import { Response } from '@/Helpers/Response'
 import type {
   ApiResponse,
@@ -21,12 +22,12 @@ const request = useGlobalStore().request
 const routeId = useRoute().params.id
 const router = useRouter()
 
-const numeroController: Ref<InputController> = ref(<InputController>{
+const descricaoController: Ref<InputController> = ref(<InputController>{
   isDisabled: true,
   isEmpty: false
 })
 
-const nomeController: Ref<InputController> = ref(<InputController>{
+const precoController: Ref<InputController> = ref(<InputController>{
   isDisabled: true,
   isEmpty: false
 })
@@ -36,7 +37,7 @@ const valorController: Ref<InputController> = ref(<InputController>{
   isEmpty: false
 })
 
-const serviceOrderController: Ref<ProfileDataController> = ref({
+const serviceController: Ref<ProfileDataController> = ref({
   notFound: false,
   isLoading: true
 })
@@ -51,30 +52,33 @@ const buttonUpdateController: Ref<ButtonController> = ref(<ButtonController>{
   isLoading: false
 })
 
-const serviceOrderData: Ref<any> = ref(<any>{})
+const serviceData: Ref<any> = ref(<any>{})
 
 const getData = async () => {
   await request
-    .get(`/ordem-servico/${routeId}`)
+    .get(`/servico/${routeId}`)
     .then((res: ApiResponse) => {
       if (res.status) {
-        serviceOrderData.value = res.list
+        serviceData.value = res.list
       } else {
-        serviceOrderController.value.notFound = true
+        serviceController.value.notFound = true
       }
     })
     .finally(() => {
-      serviceOrderController.value.isLoading = false
+      serviceController.value.isLoading = false
     })
 }
 
+const sanitazeMoney = () => {
+  serviceData.value.preco = serviceData.value.preco.substring(3)
+}
+
 const updateData = async () => {
+  sanitazeMoney()
   await request
-    .update(`/ordem-servico/${routeId}`, {
-      recebido: serviceOrderData.value.recebido,
-      concluido: serviceOrderData.value.concluido
-    })
+    .update(`/servico/${routeId}`, serviceData.value)
     .then((res: ApiResponse) => {
+      console.log(res)
       if (res.status) {
         Response.show('success', 'success')
       } else {
@@ -83,13 +87,12 @@ const updateData = async () => {
     })
     .catch((err) => {
       Response.show('error', 'update-os-error')
-      console.log('Erro')
     })
 }
 
 const deleteData = async () => {
   await request
-    .destroy(`/ordem-servico/${routeId}`)
+    .destroy(`/servico/${routeId}`)
     .then((res: ApiResponse) => {
       if (res.status) {
         Response.show('success', res.messageCode)
@@ -98,7 +101,7 @@ const deleteData = async () => {
       }
     })
     .finally(() => {
-      setTimeout(() => router.push('/service-order/list'), 2)
+      setTimeout(() => router.push('/service/list'), 2)
     })
 }
 
@@ -110,61 +113,25 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout
-      title="profile-service-order"
-      :push="{ label: 'list-service-order', to: '/service-order/list' }"
-    >
+    <FormLayout title="profile-service" :push="{ label: 'list-service', to: '/service/list' }">
       <template #body>
-        <div v-if="serviceOrderController.isLoading">loading ...</div>
+        <div v-if="serviceController.isLoading">loading ...</div>
         <div v-else>
+          {{ serviceData }}
           <SGSInput
-            label="number"
-            :reference="serviceOrderData"
-            referenceName="numero"
-            :controller="numeroController"
-            disabled
+            label="description"
+            :reference="serviceData"
+            referenceName="descricao"
+            :controller="descricaoController"
           />
           <SGSDivider />
-          <SGSInput
-            label="client"
-            :reference="serviceOrderData"
-            referenceName="nome"
-            :controller="nomeController"
-            disabled
-          />
-          <SGSDivider />
-          <SGSInput
+          <SGSMoneyInput
             label="price"
-            :reference="serviceOrderData"
-            referenceName="valor"
-            :controller="valorController"
-            disabled
+            :reference="serviceData"
+            referenceName="preco"
+            :controller="precoController"
           />
           <SGSDivider />
-          <div class="flex flex-row gap-5">
-            <SGSCheckbox label="finished" :reference="serviceOrderData" referenceName="concluido" />
-            <SGSCheckbox label="payed" :reference="serviceOrderData" referenceName="recebido" />
-          </div>
-          <SGSDivider />
-          <div v-for="equipamento in serviceOrderData['equipamentos']">
-            <SGSInput
-              label="equipment"
-              :reference="equipamento"
-              referenceName="nome"
-              :controller="nomeController"
-              disabled
-            />
-            <SGSDivider />
-            <select
-              class="w-full rounded border-[1.5px] text-black border-stroke py-3 px-5 font-normal outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark bg-white dark:bg-form-input dark:focus:border-primary"
-            >
-              <option>{{ Translate.to('services') }}</option>
-              <option v-for="servico in equipamento.servicos">
-                {{ servico.descricao }}
-              </option>
-            </select>
-            <hr class="hr" />
-          </div>
         </div>
       </template>
       <template #handler>

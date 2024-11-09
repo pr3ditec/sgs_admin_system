@@ -54,11 +54,11 @@ const router = useRouter()
     <template #actions="data">
       <div class="flex flex-row gap-1">
         <span class="cursor-pointer w-20 flex flex-row gap-2">
-          <!-- <a
+          <a
             @click="emits('editData', data.value.id)"
             class="text-sky-800 dark:text-sky-400 underline"
             >{{ Translate.to('edit') }}</a
-          > -->
+          >
           <a
             @click="modalDeleteData(data.value.id)"
             class="cursor-pointer text-black-600 dark:text-orange-600 underline"

@@ -8,7 +8,7 @@ const props = defineProps({
 })
 </script>
 <template>
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col">
     <label class="mb-0.5 block text-black dark:text-zinc-200">
       {{ Translate.to(props.label) }}
     </label>
@@ -16,14 +16,14 @@ const props = defineProps({
     <div
       v-if="props.reference![props.referenceName!]"
       @click="props.reference![props.referenceName!] = false"
-      class="w-4/12 lg:w-1/12 inline-flex bg-emerald-600 text-white rounded-md items-center justify-center gap-2.5 py-1 px-4 text-center font-medium hover:bg-opacity-90 lg:px-8 xl:px-10"
+      class="w-4/12 lg:w-1/12 cursor-pointer inline-flex bg-emerald-600 text-white rounded-md items-center justify-center gap-2.5 py-1 px-4 text-center font-medium hover:bg-opacity-90 lg:px-8 xl:px-10"
     >
       {{ Translate.to('yes') }}
     </div>
     <span
       v-if="!props.reference![props.referenceName!]"
       @click="props.reference![props.referenceName!] = true"
-      class="w-4/12 lg:w-1/12 inline-flex bg-red text-white rounded-md items-center justify-center gap-2.5 py-1 px-4 text-center font-medium hover:bg-opacity-90 lg:px-8 xl:px-10"
+      class="w-4/12 lg:w-1/12 cursor-pointer inline-flex bg-red text-white rounded-md items-center justify-center gap-2.5 py-1 px-4 text-center font-medium hover:bg-opacity-90 lg:px-8 xl:px-10"
     >
       {{ Translate.to('no') }}
     </span>

@@ -21,7 +21,7 @@ const request = useGlobalStore().request
 const routeId = useRoute().params.id
 const router = useRouter()
 
-const numeroController: Ref<InputController> = ref(<InputController>{
+const numeroSerieController: Ref<InputController> = ref(<InputController>{
   isDisabled: true,
   isEmpty: false
 })
@@ -31,12 +31,12 @@ const nomeController: Ref<InputController> = ref(<InputController>{
   isEmpty: false
 })
 
-const valorController: Ref<InputController> = ref(<InputController>{
+const tipoController: Ref<InputController> = ref(<InputController>{
   isDisabled: true,
   isEmpty: false
 })
 
-const serviceOrderController: Ref<ProfileDataController> = ref({
+const equipmentController: Ref<ProfileDataController> = ref({
   notFound: false,
   isLoading: true
 })
@@ -51,29 +51,26 @@ const buttonUpdateController: Ref<ButtonController> = ref(<ButtonController>{
   isLoading: false
 })
 
-const serviceOrderData: Ref<any> = ref(<any>{})
+const equipmentData: Ref<any> = ref(<any>{})
 
 const getData = async () => {
   await request
-    .get(`/ordem-servico/${routeId}`)
+    .get(`/aparelho/${routeId}`)
     .then((res: ApiResponse) => {
       if (res.status) {
-        serviceOrderData.value = res.list
+        equipmentData.value = res.list
       } else {
-        serviceOrderController.value.notFound = true
+        equipmentController.value.notFound = true
       }
     })
     .finally(() => {
-      serviceOrderController.value.isLoading = false
+      equipmentController.value.isLoading = false
     })
 }
 
 const updateData = async () => {
   await request
-    .update(`/ordem-servico/${routeId}`, {
-      recebido: serviceOrderData.value.recebido,
-      concluido: serviceOrderData.value.concluido
-    })
+    .update(`/aparelho/${routeId}`, equipmentData.value)
     .then((res: ApiResponse) => {
       if (res.status) {
         Response.show('success', 'success')
@@ -89,7 +86,7 @@ const updateData = async () => {
 
 const deleteData = async () => {
   await request
-    .destroy(`/ordem-servico/${routeId}`)
+    .destroy(`/aparelho/${routeId}`)
     .then((res: ApiResponse) => {
       if (res.status) {
         Response.show('success', res.messageCode)
@@ -98,7 +95,7 @@ const deleteData = async () => {
       }
     })
     .finally(() => {
-      setTimeout(() => router.push('/service-order/list'), 2)
+      setTimeout(() => router.push('/equipment/list'), 2)
     })
 }
 
@@ -111,60 +108,32 @@ onMounted(() => {
 <template>
   <DefaultLayout>
     <FormLayout
-      title="profile-service-order"
-      :push="{ label: 'list-service-order', to: '/service-order/list' }"
+      title="profile-equipment"
+      :push="{ label: 'list-equipment', to: '/equipment/list' }"
     >
       <template #body>
-        <div v-if="serviceOrderController.isLoading">loading ...</div>
+        <div v-if="equipmentController.isLoading">loading ...</div>
         <div v-else>
           <SGSInput
             label="number"
-            :reference="serviceOrderData"
-            referenceName="numero"
-            :controller="numeroController"
-            disabled
+            :reference="equipmentData"
+            referenceName="numero_serie"
+            :controller="numeroSerieController"
           />
           <SGSDivider />
           <SGSInput
-            label="client"
-            :reference="serviceOrderData"
+            label="name"
+            :reference="equipmentData"
             referenceName="nome"
             :controller="nomeController"
-            disabled
           />
           <SGSDivider />
           <SGSInput
-            label="price"
-            :reference="serviceOrderData"
-            referenceName="valor"
-            :controller="valorController"
-            disabled
+            label="type"
+            :reference="equipmentData"
+            referenceName="tipo"
+            :controller="tipoController"
           />
-          <SGSDivider />
-          <div class="flex flex-row gap-5">
-            <SGSCheckbox label="finished" :reference="serviceOrderData" referenceName="concluido" />
-            <SGSCheckbox label="payed" :reference="serviceOrderData" referenceName="recebido" />
-          </div>
-          <SGSDivider />
-          <div v-for="equipamento in serviceOrderData['equipamentos']">
-            <SGSInput
-              label="equipment"
-              :reference="equipamento"
-              referenceName="nome"
-              :controller="nomeController"
-              disabled
-            />
-            <SGSDivider />
-            <select
-              class="w-full rounded border-[1.5px] text-black border-stroke py-3 px-5 font-normal outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:text-white dark:border-form-strokedark bg-white dark:bg-form-input dark:focus:border-primary"
-            >
-              <option>{{ Translate.to('services') }}</option>
-              <option v-for="servico in equipamento.servicos">
-                {{ servico.descricao }}
-              </option>
-            </select>
-            <hr class="hr" />
-          </div>
         </div>
       </template>
       <template #handler>

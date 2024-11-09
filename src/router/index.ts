@@ -124,7 +124,7 @@ const routes = [
     name: 'Editar ordem de serviços',
     component: () => import('@/views/ServiceOrder/ProfileServiceOrderView.vue'),
     meta: {
-      title: "profile-service-order"
+      title: 'profile-service-order'
     }
   },
   /** ORDEM DE SERVICO */
@@ -146,6 +146,14 @@ const routes = [
       title: 'list-service'
     }
   },
+  {
+    path: '/service/:id',
+    name: 'Editar Serviços',
+    component: () => import('@/views/Service/ProfileServiceView.vue'),
+    meta: {
+      title: 'service'
+    }
+  },
   /** SERVICO */
 
   /** CLIENTE */
@@ -165,6 +173,14 @@ const routes = [
       title: 'list-client'
     }
   },
+  {
+    path: '/client/:id',
+    name: 'Perfil de cliente',
+    component: () => import('@/views/Client/ProfileClientView.vue'),
+    meta: {
+      title: 'client'
+    }
+  },
   /** CLIENTE */
 
   /** APARELHO */
@@ -182,6 +198,14 @@ const routes = [
     component: () => import('@/views/Equipment/ListEquipmentView.vue'),
     meta: {
       title: 'list-equipment'
+    }
+  },
+  {
+    path: '/equipment/:id',
+    name: 'Perfil de equipamento',
+    component: () => import('@/views/Equipment/ProfileEquipmentView.vue'),
+    meta: {
+      title: 'equipment'
     }
   },
   /** APARELHO */
@@ -231,14 +255,15 @@ router.beforeEach(async (to, from, next) => {
     //@ts-expect-error
     request.setToken(LocalStorageController.getToken())
   }
+  useGlobalStore().setTitle(to.meta.title as string)
   document.title = `${Translate.to(to.meta.title)} | SGS`
 
   switch (to.path) {
     case '/':
-      ; (await checkTokenLogin()) ? next('/dashboard') : next()
+      ;(await checkTokenLogin()) ? next('/dashboard') : next()
       break
     default:
-      ; (await checkTokenLogin()) ? next() : next('/')
+      ;(await checkTokenLogin()) ? next() : next('/')
       break
   }
 })

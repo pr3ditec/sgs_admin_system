@@ -163,6 +163,8 @@ const sendData = async () => {
   await request
     .store('/ordem-servico', apiFormData.value)
     .then((res: ApiResponse) => {
+      console.log(res)
+
       if (res.status) {
         Response.show('success', res.messageCode)
       } else {
@@ -243,7 +245,7 @@ onMounted(() => {
         <SGSAddEquipmentService
           v-for="count in equipmentCount"
           :key="count"
-          label="add-equipment"
+          label="select-equipment"
           @add-item="addEquipmentToServiceOrder"
           @pop-item="popEquipmentFromServiceOrder"
         >
