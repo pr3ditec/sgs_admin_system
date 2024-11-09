@@ -130,5 +130,8 @@
   "profile-service-order": "Perfil de ordem de serviço",
   "update": "Atualizar",
   "update-os-error": "Erro ao atualziar ordem de serviço",
-  "date-os": "Data ordem de servico"
+  "date-os": "Data ordem de servico",
+  "report": "Relatórios",
+  "clientes_ordem_servico": "Relatório de clientes com mais ordem de serviço",
+  "clientes_equipamentos": "Relatório de clientes com mais equipamentos"
 }

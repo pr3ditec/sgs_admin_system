@@ -98,7 +98,7 @@ const getData = async () => {
     .get(`/cliente/${routeId}`)
     .then((res: ApiResponse) => {
       if (res.status) {
-        clienteData.value = res.list
+        clienteData.value = res.list['cliente']
       } else {
         clienteDataController.value.notFound = true
       }

@@ -127,6 +127,7 @@ const getClienteData = async () => {
 const getAparelhoData = async () => {
   await request.get(`/cliente/${apiFormData.value.cliente_id}`).then((res: ApiResponse) => {
     if (res.status) {
+      console.log(res)
       //@ts-expect-error
       aparelhoData.value = res.list['aparelhos'] as Array<Aparelho>
       aparelhoController.value.isDisabled = false

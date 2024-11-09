@@ -226,8 +226,19 @@ const routes = [
     meta: {
       title: 'list-city'
     }
-  }
+  },
   /** CIDADE */
+
+  /** REALATORIOS */
+  {
+    path: '/report',
+    name: 'Relatorios',
+    component: () => import('@/views/Report/ReportView.vue'),
+    meta: {
+      title: 'report'
+    }
+  }
+  /** REALATORIOS */
 ]
 
 const router = createRouter({

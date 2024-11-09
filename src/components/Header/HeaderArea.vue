@@ -28,7 +28,7 @@ const pageTitle = useGlobalStore().getTitle
         <!-- LOGO COM TELA REDUZIDA -->
       </div>
       <div class="flex flex-row w-full">
-        <p class="uppercase text-lg text-slate-900 font-bolder">{{ Translate.to(pageTitle) }}</p>
+        <p class="uppercase text-lg text-slate-900 font-bolder dark:text-white">{{ Translate.to(pageTitle) }}</p>
       </div>
       <div class="flex flex-row w-full justify-end gap-3 2xsm:gap-7">
         <ul class="flex items-center gap-2 2xsm:gap-4">

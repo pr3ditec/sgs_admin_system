@@ -54,6 +54,11 @@ const menuGroups = [
         label: 'city',
         route: '/city/list'
       }*/
+      {
+        icon: '',
+        label: 'report',
+        route: '/report'
+      }
     ]
   }
 ]
