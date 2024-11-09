@@ -6,6 +6,7 @@ import { onMounted, ref } from 'vue'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import Translate from '@/translate'
+import { Response } from '@/Helpers/Response'
 
 const request = useGlobalStore().request
 
@@ -22,19 +23,23 @@ const getData = async () => {
 }
 
 const createTablePdf = (title: string, data: any) => {
-  const doc = new jsPDF()
+  try {
+    const doc = new jsPDF()
 
-  const columns = Object.keys(data[0]).map((key) => ({ header: key, dataKey: key }))
-  const row = data
+    const columns = Object.keys(data[0]).map((key) => ({ header: key, dataKey: key }))
+    const row = data
 
-  doc.text(title, 10, 10)
-  autoTable(doc, {
-    columns,
-    body: row,
-    startY: 20
-  })
+    doc.text(title, 10, 10)
+    autoTable(doc, {
+      columns,
+      body: row,
+      startY: 20
+    })
 
-  doc.save(`${title}.pdf`)
+    doc.save(`${title}.pdf`)
+  } catch (e) {
+    Response.show('warning', 'pdf-error')
+  }
 }
 
 onMounted(() => {
@@ -46,10 +51,11 @@ onMounted(() => {
 <template>
   <DefaultLayout>
     <div v-for="(item, index) in reportData" class="flex flex-row items-center gap-2">
-      <span class="p-3 bg-emerald-300 w-1/2 text-black rounded mb-2">{{
-        Translate.to(index)
-      }}</span>
-      <button class="p-2 underline" @click="createTablePdf(Translate.to(index), item)">
+      <span class="p-3 bg-slate-300 w-1/2 text-black rounded mb-2">{{ Translate.to(index) }}</span>
+      <button
+        class="rounded text-black underline"
+        @click="createTablePdf(Translate.to(index), item)"
+      >
         download
       </button>
     </div>

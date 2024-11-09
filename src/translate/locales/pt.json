@@ -133,5 +133,7 @@
   "date-os": "Data ordem de servico",
   "report": "Relatórios",
   "clientes_ordem_servico": "Relatório de clientes com mais ordem de serviço",
-  "clientes_equipamentos": "Relatório de clientes com mais equipamentos"
+  "clientes_equipamentos": "Relatório de clientes com mais equipamentos",
+  "greater_one_year": "Relatório de clientes que já fiezeram 1 ano da ultima ordem de serviço",
+  "pdf-error": "Erro ao gerar relatório"
 }
