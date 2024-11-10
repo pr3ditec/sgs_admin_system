@@ -85,7 +85,11 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-service" :push="{ label: 'list-service', to: '/service/list' }">
+    <FormLayout
+      @helper="Response.helperCreateFormOrder('register-service-helper-text')"
+      title="create-service"
+      :push="{ label: 'list-service', to: '/service/list' }"
+    >
       <template #body>
         <SGSInput
           label="description"

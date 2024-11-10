@@ -230,6 +230,7 @@ onMounted(() => {
 
     <FormLayout
       v-if="personTypeController == 0"
+      @helper="Response.helperCreateFormOrder('register-client-helper-text')"
       title="create-client"
       :push="{ label: 'list-client', to: '/client/list' }"
     >

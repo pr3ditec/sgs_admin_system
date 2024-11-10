@@ -121,7 +121,11 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="create-equipment" :push="{ label: 'list-equipment', to: '/equipment/list' }">
+    <FormLayout
+      @helper="Response.helperCreateFormOrder('register-equipment-helper-text')"
+      title="create-equipment"
+      :push="{ label: 'list-equipment', to: '/equipment/list' }"
+    >
       <template #body>
         <SGSInput
           label="serial-number"
