@@ -1,1 +1,0 @@
-import{a as s}from"./Response-CbK6wia3.js";import{f as l,c as r,a,x as o}from"./index-BNyOiFiL.js";const t={},c={class:"flex flex-col w-full"},n={class:"flex flex-row w-full gap-2"};function d(e,f){return l(),r("div",c,[a("div",n,[o(e.$slots,"logradouro"),o(e.$slots,"cidade"),o(e.$slots,"numero")]),o(e.$slots,"complemento")])}const _=s(t,[["render",d]]);export{_ as S};
