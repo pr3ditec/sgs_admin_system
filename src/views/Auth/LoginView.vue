@@ -102,10 +102,10 @@ onMounted(() => {
       <SGSInput label="email" required :reference="apiFormData" referenceName="email" :controller="emailController" />
       <SGSPassword label="password" required :reference="apiFormData" referenceName="senha"
         :controller="senhaController" />
-      <SGSButton @click="sendData" label="sign-in" :controller="buttonController" />
+      <SGSButton @click="sendData" label="sign-in" :controller="buttonController" class="w-32 h-10 text-sm" />
       <div class="flex flex-col mx-auto mt-3 gap-2">
-       <!--<p class="underline cursor-pointer">Esqueceu a senha?</p>--> 
-        <!--<p 0class="underline cursor-pointer">Solicite uma conta</p>-->
+        <p class="mt-9">Todos os direitos reservados</p>
+        <p class="ml-15">SGS - 2024</p>
       </div>
     </div>
   </main>
