@@ -4,6 +4,7 @@ import LocalStorageController from './LocalStorage'
 export default class Request {
   private request: any
   private baseURL: string = 'http://127.0.0.1:8000'
+  // private baseURL: string = 'http://sync.lskr.com.br'
 
   constructor() {
     this.request = axios.create({
