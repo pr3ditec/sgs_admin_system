@@ -122,7 +122,7 @@ onMounted(() => {
 
 <style scoped>
 .small-width {
-  width: 500px; /* ajuste a largura conforme necessário */
+  width: 550px; /* ajuste a largura conforme necessário */
 }
 
 .small-width1 {
@@ -179,6 +179,8 @@ onMounted(() => {
         />
         <SGSDivider />
         </div>
+        
+        
         
         <SGSSelect
           label="client"

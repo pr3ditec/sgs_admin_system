@@ -251,6 +251,7 @@ const router = createRouter({
 
 const checkTokenLogin = async (): Promise<boolean> => {
   const userToken = LocalStorageController.getToken()
+  // const isValidToken = await (await axios.get('http://sync.lskr.com.br/auth-check')).data.status
   const isValidToken = await (await axios.get('http://127.0.0.1:8000/auth-check')).data.status
 
   if (userToken && isValidToken) {
