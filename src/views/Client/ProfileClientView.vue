@@ -148,12 +148,44 @@ onMounted(() => {
   })
 })
 </script>
+
+<style scoped>
+.small-width {
+  width: 500px; /* ajuste a largura conforme necessário */
+}
+
+.small-width1 {
+  width: 200px; /* ajuste a largura conforme necessário */
+}
+
+.small-width2 {
+  width: 150px; /* ajuste a largura conforme necessário */
+}
+
+.small-width3 {
+  width: 350px; /* ajuste a largura conforme necessário */
+}
+
+.small-width4 {
+  width: 650px; /* ajuste a largura conforme necessário */
+}
+
+.flex-row {
+  display: flex;
+  gap: 5px; /* espaçamento entre os campos */
+}
+
+</style>
+
 <template>
   <DefaultLayout>
     <div v-if="clienteDataController.isLoading">Loading.....</div>
     <FormLayout v-else title="client" :push="{ label: 'list-client', to: '/client/list' }">
       <template #body>
-        <SGSInput
+
+        <div class="flex-row">
+          <SGSInput
+          class="small-width"
           label="name"
           required
           :reference="clienteData"
@@ -162,6 +194,7 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSInput
+          class="small-width2"
           label="phone"
           :mask="'(##)#####-####'"
           required
@@ -170,7 +203,9 @@ onMounted(() => {
           :controller="telefoneController"
         />
         <SGSDivider />
+
         <SGSInput
+          class="small-width2"
           :mask="'#####-###'"
           label="cep"
           required
@@ -178,10 +213,14 @@ onMounted(() => {
           referenceName="cep"
           :controller="cepController"
         />
+        </div>
+        
+        
         <SGSAddress>
           <template #cep> </template>
           <template #logradouro>
             <SGSInput
+              class="small-width3"
               label="logradouro"
               required
               :reference="clienteData"
@@ -191,6 +230,7 @@ onMounted(() => {
           </template>
           <template #numero>
             <SGSInput
+              class="small-width2"
               label="number"
               :mask="'XXXXX'"
               required
@@ -199,16 +239,10 @@ onMounted(() => {
               :controller="numeroController"
             />
           </template>
-          <template #complemento>
-            <SGSInput
-              label="complement"
-              :reference="clienteData"
-              referenceName="complemento"
-              :controller="complementoController"
-            />
-          </template>
+          
           <template #cidade>
             <SGSInput
+              class="small-width3"
               label="city"
               :controller="cidadeController"
               :reference="clienteData"
@@ -219,7 +253,16 @@ onMounted(() => {
         </SGSAddress>
         <SGSDivider />
 
-        <!-- CASO SEJA UMA PESSOA FISICA AQUI VAI O CPF -->
+        <div class="flex-row">
+            <SGSInput
+              class="small-width4"
+              label="complement"
+              :reference="clienteData"
+              referenceName="complemento"
+              :controller="complementoController"
+            />
+
+          <!-- CASO SEJA UMA PESSOA FISICA AQUI VAI O CPF -->
         <SGSInput
           v-if="clienteData.cpf"
           label="cpf"
@@ -227,10 +270,12 @@ onMounted(() => {
           :reference="clienteData"
           referenceName="cpf"
           :controller="cpfController"
+          required
         />
 
         <SGSInput
           v-if="clienteData.cnpj"
+          class="small-width3"
           label="cnpj"
           :mask="'##.###.###/####-##'"
           :reference="clienteData"
@@ -238,6 +283,10 @@ onMounted(() => {
           :controller="cnpjController"
         />
         <SGSDivider />
+        </div>
+
+
+        
         <SGSInput
           v-if="clienteData.inscricao_estadual"
           label="state-register"

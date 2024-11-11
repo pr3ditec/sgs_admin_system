@@ -235,6 +235,10 @@ onMounted(() => {
   width: 350px; /* ajuste a largura conforme necessário */
 }
 
+.small-width4 {
+  width: 650px; /* ajuste a largura conforme necessário */
+}
+
 .flex-row {
   display: flex;
   gap: 5px; /* espaçamento entre os campos */
@@ -318,14 +322,7 @@ onMounted(() => {
               :controller="numeroController"
             />
           </template>
-          <template #complemento>
-            <SGSInput
-              label="complement"
-              :reference="apiFormData"
-              referenceName="complemento"
-              :controller="complementoController"
-            />
-          </template>
+          
           <template #cidade>
             <SGSInput
             class="small-width3"
@@ -340,13 +337,26 @@ onMounted(() => {
         <SGSDivider />
 
         <!-- CASO SEJA UMA PESSOA FISICA AQUI VAI O CPF -->
-        <SGSInput
+
+        <div class="flex-row">
+          <SGSInput
+              class="small-width4"
+              label="complement"
+              :reference="apiFormData"
+              referenceName="complemento"
+              :controller="complementoController"
+            />
+          
+          <SGSInput
           label="cpf"
           :mask="'###.###.###-##'"
           :reference="apiFormData"
           referenceName="cpf"
           :controller="cpfController"
+          required
         />
+        </div>
+        
 
         <!-- CASO SEJA UMA PESSOA JURIDICA AQUI VAI O CNPJ E OUTROS DADOS -->
       </template>
@@ -363,7 +373,9 @@ onMounted(() => {
       :push="{ label: 'list-client', to: '/client/list' }"
     >
       <template #body>
-        <SGSInput
+        <div class="flex-row">
+          <SGSInput
+          class="small-width"
           label="name"
           required
           :reference="apiFormData"
@@ -372,6 +384,7 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSInput
+          class="small-width1"
           label="phone"
           :mask="'(##)#####-####'"
           required
@@ -380,7 +393,9 @@ onMounted(() => {
           :controller="telefoneController"
         />
         <SGSDivider />
+
         <SGSInput
+          class="small-width2"
           :mask="'#####-###'"
           label="cep"
           required
@@ -388,10 +403,13 @@ onMounted(() => {
           referenceName="cep"
           :controller="cepController"
         />
+        </div>
+      
         <SGSAddress>
           <template #cep> </template>
           <template #logradouro>
             <SGSInput
+              class="small-width3"
               label="logradouro"
               required
               :reference="apiFormData"
@@ -401,6 +419,7 @@ onMounted(() => {
           </template>
           <template #numero>
             <SGSInput
+              class="small-width2"
               label="number"
               :mask="'#####'"
               required
@@ -409,16 +428,17 @@ onMounted(() => {
               :controller="numeroController"
             />
           </template>
-          <template #complemento>
+          
             <SGSInput
               label="complement"
               :reference="apiFormData"
               referenceName="complemento"
               :controller="complementoController"
             />
-          </template>
+    
           <template #cidade>
             <SGSInput
+            class="small-width3"
               label="city"
               :controller="cidadeController"
               :reference="apiFormData"
@@ -430,15 +450,20 @@ onMounted(() => {
         <SGSDivider />
 
         <!-- CASO SEJA UMA PESSOA JURIDICA AQUI VAI O CNPJ E OUTROS DADOS -->
-        <SGSInput
+
+        <div class="flex-row">
+          <SGSInput
+          class="small-width3"
           label="cnpj"
           :mask="'##.###.###/####-##'"
           :reference="apiFormData"
           referenceName="cnpj"
           :controller="cnpjController"
+          required
         />
         <SGSDivider />
         <SGSInput
+          class="small-width3"
           label="state-register"
           :mask="'###############'"
           :reference="apiFormData"
@@ -447,12 +472,15 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSInput
+        class="small-width3"
           label="local-register"
           :mask="'###############'"
           :reference="apiFormData"
           referenceName="inscricao_municipal"
           :controller="inscricaoMunicipalController"
         />
+        </div>
+        
       </template>
       <template #handler>
         <SGSButton @click="sendData" label="create-client" :controller="buttonController" />
