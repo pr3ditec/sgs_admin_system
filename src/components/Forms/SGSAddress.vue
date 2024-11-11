@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div class="flex flex-col w-full">
-    <div class="flex flex-row w-full gap-2">
+    <div class="flex flex-row w-full gap-6">
       <slot name="logradouro"></slot>
       <slot name="cidade"></slot>
       <slot name="numero"></slot>

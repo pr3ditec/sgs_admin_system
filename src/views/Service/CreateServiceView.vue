@@ -83,11 +83,32 @@ onMounted(() => {
   bindKey('Enter', sendData)
 })
 </script>
+
+
+<style scoped>
+.small-width {
+  width: 1000px; /* ajuste a largura conforme necessário */
+}
+
+.small-width1 {
+  width: 200px; /* ajuste a largura conforme necessário */
+}
+
+.flex-row {
+  display: flex;
+  gap: 5px; /* espaçamento entre os campos */
+}
+
+</style>
+
 <template>
   <DefaultLayout>
     <FormLayout title="create-service" :push="{ label: 'list-service', to: '/service/list' }">
       <template #body>
-        <SGSInput
+
+        <div class="flex-row">
+          <SGSInput
+          class="small-width"
           label="description"
           required
           :reference="apiFormData"
@@ -96,6 +117,7 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSMoneyInput
+         class="small-width1"
           label="price"
           required
           :reference="apiFormData"
@@ -103,7 +125,9 @@ onMounted(() => {
           :controller="priceController"
         />
         <SGSDivider />
+        </div>     
       </template>
+      
       <template #handler>
         <SGSButton @click="sendData" label="create-service" :controller="buttonController" />
       </template>

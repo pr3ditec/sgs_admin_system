@@ -119,11 +119,40 @@ onMounted(() => {
   bindKey('Enter', sendData)
 })
 </script>
+
+<style scoped>
+.small-width {
+  width: 500px; /* ajuste a largura conforme necessário */
+}
+
+.small-width1 {
+  width: 200px; /* ajuste a largura conforme necessário */
+}
+
+.small-width2 {
+  width: 150px; /* ajuste a largura conforme necessário */
+}
+
+.small-width3 {
+  width: 350px; /* ajuste a largura conforme necessário */
+}
+
+.flex-row {
+  display: flex;
+  gap: 5px; /* espaçamento entre os campos */
+}
+
+</style>
+
 <template>
   <DefaultLayout>
     <FormLayout title="create-equipment" :push="{ label: 'list-equipment', to: '/equipment/list' }">
+
+
       <template #body>
-        <SGSInput
+        <div class="flex-row">
+          <SGSInput
+          class="small-width1"
           label="serial-number"
           required
           :reference="apiFormData"
@@ -132,6 +161,7 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSInput
+        class="small-width"
           label="name"
           required
           :reference="apiFormData"
@@ -139,6 +169,7 @@ onMounted(() => {
           :controller="nomeController"
         />
         <SGSDivider />
+
         <SGSInput
           label="type"
           required
@@ -147,6 +178,8 @@ onMounted(() => {
           :controller="tipoController"
         />
         <SGSDivider />
+        </div>
+        
         <SGSSelect
           label="client"
           :items="clientData"

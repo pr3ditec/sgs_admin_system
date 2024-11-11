@@ -211,6 +211,24 @@ onMounted(() => {
   apiFormData.value.usuario_id = 2
 })
 </script>
+
+<style scoped>
+.small-width {
+  width: 200px; /* ajuste a largura conforme necessário */
+}
+
+.small-width1 {
+  width: 450px; /* ajuste a largura conforme necessário */
+}
+
+.flex-row {
+  display: flex;
+  gap: 16px; /* espaçamento entre os campos */
+}
+
+</style>
+
+
 <template>
   <DefaultLayout>
     <FormLayout
@@ -227,21 +245,27 @@ onMounted(() => {
           referenceName="cliente_id"
           required
         />
-        <SGSMoneyInput
+
+        <div class="flex-row">
+          <SGSMoneyInput
+          class="small-width1"
           label="price"
           required
           :reference="apiFormData"
           referenceName="valor"
           :controller="valorOsController"
-        />
+          />
         <SGSDivider />
         <SGSDatePicker
+          class="small-width1"
           label="date-os"
           required
           :reference="apiFormData"
           referenceName="data_os"
           :controller="dataOsController"
-        />
+         />
+        </div>
+        
         <SGSDivider />
         <SGSAddEquipmentService
           v-for="count in equipmentCount"

@@ -216,10 +216,37 @@ onMounted(() => {
   apiFormData.value.usuario_id = 1
 })
 </script>
+
+
+<style scoped>
+.small-width {
+  width: 500px; /* ajuste a largura conforme necessário */
+}
+
+.small-width1 {
+  width: 200px; /* ajuste a largura conforme necessário */
+}
+
+.small-width2 {
+  width: 150px; /* ajuste a largura conforme necessário */
+}
+
+.small-width3 {
+  width: 350px; /* ajuste a largura conforme necessário */
+}
+
+.flex-row {
+  display: flex;
+  gap: 5px; /* espaçamento entre os campos */
+}
+
+</style>
+
+
 <template>
   <DefaultLayout>
     <div class="flex flex-col items-center">
-      <p>Selecione o tipo de pessoa?</p>
+      <p><strong>Selecione o tipo de pessoa</strong> </p>
       <div class="flex flex-row gap-2 mx-auto">
         <label>{{ Translate.to('normal-person') }}</label>
         <input type="radio" name="register" v-model="personTypeController" value="0" />
@@ -234,7 +261,9 @@ onMounted(() => {
       :push="{ label: 'list-client', to: '/client/list' }"
     >
       <template #body>
-        <SGSInput
+        <div class="flex-row">
+          <SGSInput
+          class="small-width"
           label="name"
           required
           :reference="apiFormData"
@@ -243,6 +272,7 @@ onMounted(() => {
         />
         <SGSDivider />
         <SGSInput
+          class="small-width1"
           label="phone"
           :mask="'(##)#####-####'"
           required
@@ -251,7 +281,9 @@ onMounted(() => {
           :controller="telefoneController"
         />
         <SGSDivider />
+
         <SGSInput
+          class="small-width2"
           :mask="'#####-###'"
           label="cep"
           required
@@ -259,10 +291,14 @@ onMounted(() => {
           referenceName="cep"
           :controller="cepController"
         />
+        </div>
+        
+        
         <SGSAddress>
           <template #cep> </template>
           <template #logradouro>
             <SGSInput
+            class="small-width3"
               label="logradouro"
               required
               :reference="apiFormData"
@@ -272,6 +308,7 @@ onMounted(() => {
           </template>
           <template #numero>
             <SGSInput
+            class="small-width2"
               label="number"
               :mask="'XXXXX'"
               required
@@ -290,6 +327,7 @@ onMounted(() => {
           </template>
           <template #cidade>
             <SGSInput
+            class="small-width3"
               label="city"
               :controller="cidadeController"
               :reference="apiFormData"
