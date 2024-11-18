@@ -5,14 +5,17 @@ import Translate from '@/translate'
 import { ref, watch, type Ref } from 'vue'
 
 const props = defineProps({
-  label: String
+  label: String,
+  aparelhoSize: Number
 })
 const emits = defineEmits(['addItem', 'popItem'])
 
 const itemController: Ref<boolean> = ref(<boolean>false)
+const numberOfItemsController: Ref<number> = ref(<number>0)
 
 const addItem = () => {
   itemController.value = true
+  numberOfItemsController.value++
   emits('addItem')
 }
 

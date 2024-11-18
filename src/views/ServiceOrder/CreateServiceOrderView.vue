@@ -90,9 +90,13 @@ const apiFormData: Ref<OrdemServico> = ref(<OrdemServico>{
 })
 
 const addEquipmentToServiceOrder = () => {
+  // if (equipmentCount.value > aparelhoData.value.length) {
+  //   return
+  // } else {
   equipmentCount.value++
   equipamentosServicosData.value.push(<EquipamentosServicos>{})
   apiFormData.value.equipamentos_servicos = equipamentosServicosData.value
+  // }
 }
 
 const popEquipmentFromServiceOrder = () => {
@@ -225,9 +229,7 @@ onMounted(() => {
   display: flex;
   gap: 16px; /* espaçamento entre os campos */
 }
-
 </style>
-
 
 <template>
   <DefaultLayout>
@@ -249,29 +251,31 @@ onMounted(() => {
 
         <div class="flex-row">
           <SGSMoneyInput
-          class="small-width1"
-          label="price"
-          required
-          :reference="apiFormData"
-          referenceName="valor"
-          :controller="valorOsController"
+            class="small-width1"
+            label="price"
+            required
+            :reference="apiFormData"
+            referenceName="valor"
+            :controller="valorOsController"
           />
-        <SGSDivider />
-        <SGSDatePicker
-          class="small-width1"
-          label="date-os"
-          required
-          :reference="apiFormData"
-          referenceName="data_os"
-          :controller="dataOsController"
-         />
+          <SGSDivider />
+          <SGSDatePicker
+            class="small-width1"
+            label="date-os"
+            required
+            :reference="apiFormData"
+            referenceName="data_os"
+            :controller="dataOsController"
+          />
         </div>
-        
+
         <SGSDivider />
         <SGSAddEquipmentService
+          v-if="apiFormData.cliente_id != 0"
           v-for="count in equipmentCount"
           :key="count"
           label="select-equipment"
+          :aparelho-size="aparelhoData.length"
           @add-item="addEquipmentToServiceOrder"
           @pop-item="popEquipmentFromServiceOrder"
         >
