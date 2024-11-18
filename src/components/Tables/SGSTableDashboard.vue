@@ -45,6 +45,8 @@ const router = useRouter()
   <Vue3Datatable
     rowClass="dark:bg-form-input dark:text-zinc-300 font-bold"
     skin="none"
+    noDataContent="Nenhum dado disponível"
+    paginationInfo="Mostrando dados recuperados"
     :sortable="true"
     :columns="props.header"
     :loading="props.isLoading"

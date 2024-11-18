@@ -36,7 +36,7 @@ const calendarOptions: Ref<CalendarOptions> = ref({
   eventDisplay: 'list-item',
   eventClassNames: 'cursor-pointer',
   dateClick: () => handleDateClick(),
-  eventClick: () => handleEventClick()
+  eventClick: (evt) => handleEventClick(evt.event)
 })
 
 const getServiceOrderData = async () => {
@@ -57,8 +57,8 @@ const handleDateClick = () => {
   router.push('/service-order/create')
 }
 
-const handleEventClick = () => {
-  // openCalendarEditModal('nome')
+const handleEventClick = (evt: any) => {
+  router.push(`/service-order/${evt._def.publicId}`)
 }
 
 onMounted(() => {
@@ -69,10 +69,10 @@ onMounted(() => {
 </script>
 <template>
   <DefaultLayout>
-    <FormLayout title="service-order">
-      <template #body>
-        <FullCalendarComponent v-if="true" ref="calendar" :options="calendarOptions" />
-      </template>
-    </FormLayout>
+    <!-- <FormLayout title="service-order"> -->
+    <!-- <template #body> -->
+    <FullCalendarComponent v-if="true" ref="calendar" :options="calendarOptions" />
+    <!-- </template> -->
+    <!-- </FormLayout> -->
   </DefaultLayout>
 </template>

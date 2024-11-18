@@ -60,7 +60,7 @@ const getServiceData = async () => {
     })
 }
 const deleteData = async (id: Number) => {
-  await request.destroy(`/cidade/${id}`).then((res) => {
+  await request.destroy(`/servico/${id}`).then((res) => {
     if (res.status) {
       getServiceData()
       Response.show('success', res.messageCode)

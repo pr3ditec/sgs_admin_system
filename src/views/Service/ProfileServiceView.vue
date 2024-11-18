@@ -117,7 +117,6 @@ onMounted(() => {
       <template #body>
         <div v-if="serviceController.isLoading">loading ...</div>
         <div v-else>
-          {{ serviceData }}
           <SGSInput
             label="description"
             :reference="serviceData"
