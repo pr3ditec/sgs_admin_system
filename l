@@ -1,0 +1,1 @@
+VITE_API=http://sync.lskr.com.br
