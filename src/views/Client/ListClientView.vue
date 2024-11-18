@@ -16,7 +16,6 @@ import { useRouter } from 'vue-router'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import SGSTable from '@/components/Tables/SGSTable.vue'
 import Translate from '@/translate'
-import SGSTableHelper from '@/components/Tables/SGSTableHelper.vue'
 import FormLayout from '@/layouts/FormLayout.vue'
 
 const router = useRouter()
@@ -27,11 +26,11 @@ const tableController: Ref<TableCotnroller> = ref({
 })
 
 const headerController: Ref<Array<HeaderTableController>> = ref([
-  {
-    field: 'id',
-    title: '#',
-    headerClass: 'flex flex-row gap-1 font-bold uppercase'
-  },
+  // {
+  //   field: 'id',
+  //   title: '#',
+  //   headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  // },
   {
     field: 'nome',
     title: Translate.to('name'),

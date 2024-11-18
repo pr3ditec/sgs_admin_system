@@ -21,11 +21,11 @@ const tableController: Ref<TableCotnroller> = ref({
   isLoading: false
 })
 const headerController: Ref<Array<HeaderTableController>> = ref([
-  {
-    field: 'id',
-    title: '#',
-    headerClass: 'flex flex-row gap-1 font-bold uppercase'
-  },
+  // {
+  //   field: 'id',
+  //   title: '#',
+  //   headerClass: 'flex flex-row gap-1 font-bold uppercase'
+  // },
   {
     field: 'numero',
     title: Translate.to('number'),
